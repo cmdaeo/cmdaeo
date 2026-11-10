@@ -1,43 +1,33 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 60" width="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 40" width="100%">
   <defs>
-    <linearGradient id="divGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#ff0066" stop-opacity="0"/>
-      <stop offset="20%" stop-color="#00e5ff" stop-opacity="0.7"/>
-      <stop offset="80%" stop-color="#a020f0" stop-opacity="0.7"/>
+      <stop offset="20%" stop-color="#00e5ff" stop-opacity="0.4"/>
+      <stop offset="50%" stop-color="#a020f0" stop-opacity="0.8"/>
+      <stop offset="80%" stop-color="#00e5ff" stop-opacity="0.4"/>
       <stop offset="100%" stop-color="#ff0066" stop-opacity="0"/>
     </linearGradient>
-    <g id="miniTri">
-      <polygon points="0,-12 -10,7 10,7" fill="none" stroke="url(#divGrad)" stroke-width="1.5"/>
-      <polygon points="0,-12 -10,7 10,7" fill="url(#divGrad)" opacity="0.15"/>
-    </g>
+    <filter id="knotGlow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
   </defs>
-  <rect width="1200" height="60" fill="#0a0a0c"/>
-  <g>
-    <animateTransform attributeName="transform" type="translate" from="0 0" to="50 0" dur="3s" repeatCount="indefinite"/>
-    <use href="#miniTri" x="25" y="30"/>
-    <use href="#miniTri" x="75" y="30"/>
-    <use href="#miniTri" x="125" y="30"/>
-    <use href="#miniTri" x="175" y="30"/>
-    <use href="#miniTri" x="225" y="30"/>
-    <use href="#miniTri" x="275" y="30"/>
-    <use href="#miniTri" x="325" y="30"/>
-    <use href="#miniTri" x="375" y="30"/>
-    <use href="#miniTri" x="425" y="30"/>
-    <use href="#miniTri" x="475" y="30"/>
-    <use href="#miniTri" x="525" y="30"/>
-    <use href="#miniTri" x="575" y="30"/>
-    <use href="#miniTri" x="625" y="30"/>
-    <use href="#miniTri" x="675" y="30"/>
-    <use href="#miniTri" x="725" y="30"/>
-    <use href="#miniTri" x="775" y="30"/>
-    <use href="#miniTri" x="825" y="30"/>
-    <use href="#miniTri" x="875" y="30"/>
-    <use href="#miniTri" x="925" y="30"/>
-    <use href="#miniTri" x="975" y="30"/>
-    <use href="#miniTri" x="1025" y="30"/>
-    <use href="#miniTri" x="1075" y="30"/>
-    <use href="#miniTri" x="1125" y="30"/>
-    <use href="#miniTri" x="1175" y="30"/>
-    <use href="#miniTri" x="1225" y="30"/>
+
+  <rect width="1200" height="40" fill="#0a0a0c"/>
+
+  <path d="M 0 20 L 530 20 M 670 20 L 1200 20" stroke="url(#lineGrad)" stroke-width="1" />
+  <path d="M 0 20 L 530 20 M 670 20 L 1200 20" stroke="url(#lineGrad)" stroke-width="3" opacity="0.2" filter="url(#knotGlow)"/>
+
+  <g transform="translate(600 20)">
+    <path d="M -50 0 C -50 -20 -10 -20 0 0 C 10 20 50 20 50 0 C 50 -20 10 -20 0 0 C -10 20 -50 20 -50 0 Z"
+          fill="none" stroke="url(#lineGrad)" stroke-width="2" filter="url(#knotGlow)">
+      <animate attributeName="stroke-dasharray" values="0 300;300 0" dur="6s" repeatCount="indefinite"/>
+    </path>
+    <circle r="3" fill="#00e5ff" filter="url(#knotGlow)">
+      <animateMotion dur="4s" repeatCount="indefinite" path="M -50 0 C -50 -20 -10 -20 0 0 C 10 20 50 20 50 0 C 50 -20 10 -20 0 0 C -10 20 -50 20 -50 0 Z"/>
+    </circle>
   </g>
 </svg>
