@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 150" width="100%">
+  <defs>
+    <linearGradient id="mobiusGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"><animate attributeName="stop-color" values="#ff0066;#00e5ff;#a020f0;#ff0066" dur="8s" repeatCount="indefinite"/></stop>
+      <stop offset="100%"><animate attributeName="stop-color" values="#00e5ff;#a020f0;#ff0066;#00e5ff" dur="8s" repeatCount="indefinite"/></stop>
+    </linearGradient>
+    <filter id="mobGlow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="150" fill="#0a0a0c"/>
+  <g transform="translate(600 70)">
+    <path d="M -180 0 C -180 -50 -90 -70 0 0 C 90 70 180 50 180 0 C 180 -50 90 -70 0 0 C -90 70 -180 50 -180 0 Z"
+          fill="none" stroke="url(#mobiusGrad)" stroke-width="2.5" filter="url(#mobGlow)">
+      <animate attributeName="stroke-width" values="2;3.5;2" dur="3s" repeatCount="indefinite"/>
+    </path>
+    <circle r="3" fill="#00e5ff">
+      <animateMotion dur="8s" repeatCount="indefinite" path="M -180 0 C -180 -50 -90 -70 0 0 C 90 70 180 50 180 0 C 180 -50 90 -70 0 0 C -90 70 -180 50 -180 0"/>
+    </circle>
+  </g>
+  <text x="600" y="135" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10" letter-spacing="8" fill="#ffffff" opacity="0.5">MMXXVI · CMD AEO</text>
+</svg>
