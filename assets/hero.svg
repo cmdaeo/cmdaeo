@@ -1,97 +1,209 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" width="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" width="1200" height="500">
   <defs>
-    <linearGradient id="triGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%"><animate attributeName="stop-color" values="#ff0066;#00e5ff;#a020f0;#00ff88;#ff0066" dur="10s" repeatCount="indefinite"/></stop>
-      <stop offset="50%"><animate attributeName="stop-color" values="#00e5ff;#a020f0;#ff0066;#00e5ff" dur="8s" repeatCount="indefinite"/></stop>
-      <stop offset="100%"><animate attributeName="stop-color" values="#a020f0;#ff0066;#00ff88;#a020f0" dur="12s" repeatCount="indefinite"/></stop>
-    </linearGradient>
-
-    <filter id="warpGrid" x="-20%" y="-20%" width="140%" height="140%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="5" result="noise">
-        <animate attributeName="baseFrequency" values="0.008 0.012;0.015 0.02;0.008 0.012" dur="20s" repeatCount="indefinite"/>
-        <animate attributeName="seed" values="5;12;3;5" dur="30s" repeatCount="indefinite"/>
-      </feTurbulence>
-      <feDisplacementMap in="SourceGraphic" in2="noise" scale="25" xChannelSelector="R" yChannelSelector="G"/>
-    </filter>
-
-    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffffff" stroke-width="0.5" opacity="0.12"/>
+    <pattern id="minor-grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#00f0ff" stroke-width="0.5" stroke-opacity="0.07" />
+    </pattern>
+    <pattern id="major-grid" width="160" height="160" patternUnits="userSpaceOnUse">
+      <rect width="160" height="160" fill="url(#minor-grid)" />
+      <path d="M 160 0 L 0 0 0 160" fill="none" stroke="#00f0ff" stroke-width="0.8" stroke-opacity="0.14" />
+      <path d="M 156 0 L 164 0 M 0 156 L 0 164" fill="none" stroke="#ff1e8a" stroke-width="1" stroke-opacity="0.35" />
     </pattern>
 
-    <filter id="glitchText" x="-5%" y="-5%" width="110%" height="110%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" seed="3" result="noise">
-        <animate attributeName="baseFrequency" values="0.9;1.4;0.9" dur="0.6s" repeatCount="indefinite"/>
-        <animate attributeName="seed" values="3;7;2;3" dur="0.8s" repeatCount="indefinite"/>
+    <radialGradient id="vignette" cx="50%" cy="50%" r="52%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
+      <stop offset="55%" stop-color="#ffffff" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+    <mask id="grid-mask">
+      <rect width="1200" height="500" fill="url(#vignette)" />
+    </mask>
+
+    <radialGradient id="ambient-aura" cx="50%" cy="50%" r="36%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.12" />
+      <stop offset="45%" stop-color="#00f0ff" stop-opacity="0.06" />
+      <stop offset="100%" stop-color="#0a0a0c" stop-opacity="0" />
+    </radialGradient>
+
+    <linearGradient id="border-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0" />
+      <stop offset="25%" stop-color="#00f0ff" stop-opacity="0.65" />
+      <stop offset="50%" stop-color="#8b5cf6" stop-opacity="0.85" />
+      <stop offset="75%" stop-color="#ff1e8a" stop-opacity="0.65" />
+      <stop offset="100%" stop-color="#ff1e8a" stop-opacity="0" />
+    </linearGradient>
+
+    <filter id="subtle-warp" x="-10%" y="-10%" width="120%" height="120%" filterUnits="objectBoundingBox">
+      <feTurbulence type="fractalNoise" baseFrequency="0.0035 0.007" numOctaves="2" seed="11" result="noise">
+        <animate attributeName="baseFrequency" values="0.0035 0.007;0.005 0.009;0.0035 0.007" dur="18s" repeatCount="indefinite" />
       </feTurbulence>
-      <feDisplacementMap in="SourceGraphic" in2="noise" scale="4"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="14" xChannelSelector="R" yChannelSelector="G" />
     </filter>
 
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="4" result="blur"/>
+    <filter id="wireframe-bloom" x="-35%" y="-35%" width="170%" height="170%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="tight-glow" />
+      <feGaussianBlur in="SourceGraphic" stdDeviation="7" result="wide-glow" />
       <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
+        <feMergeNode in="wide-glow" />
+        <feMergeNode in="tight-glow" />
+        <feMergeNode in="SourceGraphic" />
       </feMerge>
+    </filter>
+
+    <filter id="precision-aberration" x="-15%" y="-25%" width="130%" height="150%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.001 0.22" numOctaves="1" seed="5" result="scan-noise">
+        <animate attributeName="seed" values="5;14;9;22;5" dur="3s" repeatCount="indefinite" />
+      </feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="scan-noise" scale="0" xChannelSelector="R" yChannelSelector="G" result="sheared">
+        <animate attributeName="scale" values="0;0;5;0;0;0;3;0;0" keyTimes="0;0.46;0.47;0.48;0.75;0.91;0.92;0.93;1" dur="6s" repeatCount="indefinite" />
+      </feDisplacementMap>
+
+      <feColorMatrix in="sheared" type="matrix" values="1 0 0 0 0
+                0 0.08 0 0 0
+                0 0 0.54 0 0
+                0 0 0 0.9 0" result="pink-chan" />
+      <feOffset in="pink-chan" dx="-1.8" dy="0" result="pink-offset">
+        <animate attributeName="dx" values="-1.6;-1.6;-4.5;-1.6;-1.6;-3.2;-1.6" keyTimes="0;0.46;0.47;0.48;0.91;0.92;1" dur="6s" repeatCount="indefinite" />
+      </feOffset>
+
+      <feColorMatrix in="sheared" type="matrix" values="0 0 0 0 0
+                0 0.94 0 0 0
+                0 0 1 0 0
+                0 0 0 0.9 0" result="cyan-chan" />
+      <feOffset in="cyan-chan" dx="1.8" dy="0" result="cyan-offset">
+        <animate attributeName="dx" values="1.6;1.6;4.5;1.6;1.6;3.2;1.6" keyTimes="0;0.46;0.47;0.48;0.91;0.92;1" dur="6s" repeatCount="indefinite" />
+      </feOffset>
+
+      <feBlend mode="screen" in="pink-offset" in2="cyan-offset" result="split-channels" />
+      <feBlend mode="screen" in="split-channels" in2="sheared" />
     </filter>
   </defs>
 
-  <rect width="1200" height="500" fill="#0a0a0c"/>
-  <g filter="url(#warpGrid)" opacity="0.35">
-    <rect width="1200" height="500" fill="url(#grid)"/>
+  <rect width="1200" height="500" fill="#0a0a0c" />
+
+  <g mask="url(#grid-mask)">
+    <rect x="-60" y="-60" width="1320" height="620" fill="url(#major-grid)" filter="url(#subtle-warp)" />
   </g>
 
-  <g transform="translate(600 250)" opacity="0.2">
-    <ellipse rx="480" ry="220" fill="none" stroke="#ff0066" stroke-width="0.5">
-      <animate attributeName="rx" values="480;520;480" dur="6s" repeatCount="indefinite"/>
-      <animate attributeName="stroke" values="#ff0066;#00e5ff;#a020f0;#ff0066" dur="10s" repeatCount="indefinite"/>
-    </ellipse>
-    <ellipse rx="420" ry="190" fill="none" stroke="#00e5ff" stroke-width="0.5">
-      <animate attributeName="rx" values="420;450;420" dur="7s" repeatCount="indefinite"/>
-    </ellipse>
-    <ellipse rx="360" ry="160" fill="none" stroke="#a020f0" stroke-width="0.5">
-      <animate attributeName="rx" values="360;385;360" dur="8s" repeatCount="indefinite"/>
-    </ellipse>
-  </g>
+  <ellipse cx="600" cy="250" rx="420" ry="210" fill="url(#ambient-aura)" />
 
-  <g transform="translate(600 250)">
-    <g>
-      <polygon points="0,-110 -95,55 95,55" fill="url(#triGrad)" opacity="0.12">
-        <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="30s" repeatCount="indefinite"/>
-      </polygon>
-      <polygon points="0,-110 -95,55 95,55" fill="none" stroke="url(#triGrad)" stroke-width="2.5" filter="url(#glow)">
-        <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="30s" repeatCount="indefinite"/>
-      </polygon>
+  <g transform="translate(600, 250)" filter="url(#wireframe-bloom)">
+    <g transform="rotate(-14)">
+      <animateTransform attributeName="transform" type="rotate" from="-14" to="346" dur="60s" repeatCount="indefinite" />
+
+      <path fill="none" stroke="#ff1e8a" stroke-width="1.35" stroke-linecap="round" stroke-opacity="0.78" d="M-64,-118 L-166,-166 M128,-118 L166,-166 M128,74 L166,166 M-64,74 L-166,166">
+        <animate attributeName="d" dur="12s" repeatCount="indefinite" values="M-64,-118 L-166,-166 M128,-118 L166,-166 M128,74 L166,166 M-64,74 L-166,166;
+                  M-115,-154 L-161,-122 M161,-154 L115,-122 M161,122 L115,154 M-115,122 L-161,154;
+                  M-166,-166 L-128,-74 M166,-166 L64,-74 M166,166 L64,118 M-166,166 L-128,118;
+                  M-161,-122 L-89,-50 M115,-122 L43,-50 M115,154 L43,82 M-161,154 L-89,82;
+                  M-128,-74 L-52,-52 M64,-74 L52,-52 M64,118 L52,52 M-128,118 L-52,52;
+                  M-89,-50 L-43,-82 M43,-50 L89,-82 M43,82 L89,50 M-89,82 L-43,50;
+                  M-52,-52 L-64,-118 M52,-52 L128,-118 M52,52 L128,74 M-52,52 L-64,74;
+                  M-43,-82 L-115,-154 M89,-82 L161,-154 M89,50 L161,122 M-43,50 L-115,122;
+                  M-64,-118 L-166,-166 M128,-118 L166,-166 M128,74 L166,166 M-64,74 L-166,166" />
+        <animate attributeName="stroke" values="#ff1e8a;#00f0ff;#8b5cf6;#ff1e8a" dur="8s" repeatCount="indefinite" />
+      </path>
+
+      <path fill="none" stroke="#00f0ff" stroke-width="1.35" stroke-linecap="round" stroke-opacity="0.78" d="M-166,-166 L-128,-74 M166,-166 L64,-74 M166,166 L64,118 M-166,166 L-128,118">
+        <animate attributeName="d" dur="12s" repeatCount="indefinite" values="M-166,-166 L-128,-74 M166,-166 L64,-74 M166,166 L64,118 M-166,166 L-128,118;
+                  M-161,-122 L-89,-50 M115,-122 L43,-50 M115,154 L43,82 M-161,154 L-89,82;
+                  M-128,-74 L-52,-52 M64,-74 L52,-52 M64,118 L52,52 M-128,118 L-52,52;
+                  M-89,-50 L-43,-82 M43,-50 L89,-82 M43,82 L89,50 M-89,82 L-43,50;
+                  M-52,-52 L-64,-118 M52,-52 L128,-118 M52,52 L128,74 M-52,52 L-64,74;
+                  M-43,-82 L-115,-154 M89,-82 L161,-154 M89,50 L161,122 M-43,50 L-115,122;
+                  M-64,-118 L-166,-166 M128,-118 L166,-166 M128,74 L166,166 M-64,74 L-166,166;
+                  M-115,-154 L-161,-122 M161,-154 L115,-122 M161,122 L115,154 M-115,122 L-161,154;
+                  M-166,-166 L-128,-74 M166,-166 L64,-74 M166,166 L64,118 M-166,166 L-128,118" />
+        <animate attributeName="stroke" values="#00f0ff;#8b5cf6;#ff1e8a;#00f0ff" dur="8s" repeatCount="indefinite" />
+      </path>
+
+      <path fill="none" stroke="#8b5cf6" stroke-width="1.35" stroke-linecap="round" stroke-opacity="0.78" d="M-128,-74 L-52,-52 M64,-74 L52,-52 M64,118 L52,52 M-128,118 L-52,52">
+        <animate attributeName="d" dur="12s" repeatCount="indefinite" values="M-128,-74 L-52,-52 M64,-74 L52,-52 M64,118 L52,52 M-128,118 L-52,52;
+                  M-89,-50 L-43,-82 M43,-50 L89,-82 M43,82 L89,50 M-89,82 L-43,50;
+                  M-52,-52 L-64,-118 M52,-52 L128,-118 M52,52 L128,74 M-52,52 L-64,74;
+                  M-43,-82 L-115,-154 M89,-82 L161,-154 M89,50 L161,122 M-43,50 L-115,122;
+                  M-64,-118 L-166,-166 M128,-118 L166,-166 M128,74 L166,166 M-64,74 L-166,166;
+                  M-115,-154 L-161,-122 M161,-154 L115,-122 M161,122 L115,154 M-115,122 L-161,154;
+                  M-166,-166 L-128,-74 M166,-166 L64,-74 M166,166 L64,118 M-166,166 L-128,118;
+                  M-161,-122 L-89,-50 M115,-122 L43,-50 M115,154 L43,82 M-161,154 L-89,82;
+                  M-128,-74 L-52,-52 M64,-74 L52,-52 M64,118 L52,52 M-128,118 L-52,52" />
+        <animate attributeName="stroke" values="#8b5cf6;#ff1e8a;#00f0ff;#8b5cf6" dur="8s" repeatCount="indefinite" />
+      </path>
+
+      <path fill="none" stroke="#ff1e8a" stroke-width="1.35" stroke-linecap="round" stroke-opacity="0.78" d="M-52,-52 L-64,-118 M52,-52 L128,-118 M52,52 L128,74 M-52,52 L-64,74">
+        <animate attributeName="d" dur="12s" repeatCount="indefinite" values="M-52,-52 L-64,-118 M52,-52 L128,-118 M52,52 L128,74 M-52,52 L-64,74;
+                  M-43,-82 L-115,-154 M89,-82 L161,-154 M89,50 L161,122 M-43,50 L-115,122;
+                  M-64,-118 L-166,-166 M128,-118 L166,-166 M128,74 L166,166 M-64,74 L-166,166;
+                  M-115,-154 L-161,-122 M161,-154 L115,-122 M161,122 L115,154 M-115,122 L-161,154;
+                  M-166,-166 L-128,-74 M166,-166 L64,-74 M166,166 L64,118 M-166,166 L-128,118;
+                  M-161,-122 L-89,-50 M115,-122 L43,-50 M115,154 L43,82 M-161,154 L-89,82;
+                  M-128,-74 L-52,-52 M64,-74 L52,-52 M64,118 L52,52 M-128,118 L-52,52;
+                  M-89,-50 L-43,-82 M43,-50 L89,-82 M43,82 L89,50 M-89,82 L-43,50;
+                  M-52,-52 L-64,-118 M52,-52 L128,-118 M52,52 L128,74 M-52,52 L-64,74" />
+        <animate attributeName="stroke" values="#00f0ff;#ff1e8a;#8b5cf6;#00f0ff" dur="8s" repeatCount="indefinite" />
+      </path>
+
+      <path fill="#00f0ff" fill-opacity="0.015" stroke="#00f0ff" stroke-width="1.9" stroke-linejoin="round" d="M-64,-118 L128,-118 L128,74 L-64,74 Z">
+        <animate attributeName="d" dur="12s" repeatCount="indefinite" values="M-64,-118 L128,-118 L128,74 L-64,74 Z;
+                  M-115,-154 L161,-154 L161,122 L-115,122 Z;
+                  M-166,-166 L166,-166 L166,166 L-166,166 Z;
+                  M-161,-122 L115,-122 L115,154 L-161,154 Z;
+                  M-128,-74 L64,-74 L64,118 L-128,118 Z;
+                  M-89,-50 L43,-50 L43,82 L-89,82 Z;
+                  M-52,-52 L52,-52 L52,52 L-52,52 Z;
+                  M-43,-82 L89,-82 L89,50 L-43,50 Z;
+                  M-64,-118 L128,-118 L128,74 L-64,74 Z" />
+        <animate attributeName="stroke" values="#00f0ff;#ff1e8a;#8b5cf6;#00f0ff" dur="6s" repeatCount="indefinite" />
+      </path>
+
+      <path fill="#ff1e8a" fill-opacity="0.015" stroke="#ff1e8a" stroke-width="1.9" stroke-linejoin="round" d="M-166,-166 L166,-166 L166,166 L-166,166 Z">
+        <animate attributeName="d" dur="12s" repeatCount="indefinite" values="M-166,-166 L166,-166 L166,166 L-166,166 Z;
+                  M-161,-122 L115,-122 L115,154 L-161,154 Z;
+                  M-128,-74 L64,-74 L64,118 L-128,118 Z;
+                  M-89,-50 L43,-50 L43,82 L-89,82 Z;
+                  M-52,-52 L52,-52 L52,52 L-52,52 Z;
+                  M-43,-82 L89,-82 L89,50 L-43,50 Z;
+                  M-64,-118 L128,-118 L128,74 L-64,74 Z;
+                  M-115,-154 L161,-154 L161,122 L-115,122 Z;
+                  M-166,-166 L166,-166 L166,166 L-166,166 Z" />
+        <animate attributeName="stroke" values="#ff1e8a;#8b5cf6;#00f0ff;#ff1e8a" dur="6s" repeatCount="indefinite" />
+      </path>
+
+      <path fill="#8b5cf6" fill-opacity="0.015" stroke="#8b5cf6" stroke-width="1.9" stroke-linejoin="round" d="M-128,-74 L64,-74 L64,118 L-128,118 Z">
+        <animate attributeName="d" dur="12s" repeatCount="indefinite" values="M-128,-74 L64,-74 L64,118 L-128,118 Z;
+                  M-89,-50 L43,-50 L43,82 L-89,82 Z;
+                  M-52,-52 L52,-52 L52,52 L-52,52 Z;
+                  M-43,-82 L89,-82 L89,50 L-43,50 Z;
+                  M-64,-118 L128,-118 L128,74 L-64,74 Z;
+                  M-115,-154 L161,-154 L161,122 L-115,122 Z;
+                  M-166,-166 L166,-166 L166,166 L-166,166 Z;
+                  M-161,-122 L115,-122 L115,154 L-161,154 Z;
+                  M-128,-74 L64,-74 L64,118 L-128,118 Z" />
+        <animate attributeName="stroke" values="#8b5cf6;#00f0ff;#ff1e8a;#8b5cf6" dur="6s" repeatCount="indefinite" />
+      </path>
+
+      <path fill="#00f0ff" fill-opacity="0.015" stroke="#00f0ff" stroke-width="1.9" stroke-linejoin="round" d="M-52,-52 L52,-52 L52,52 L-52,52 Z">
+        <animate attributeName="d" dur="12s" repeatCount="indefinite" values="M-52,-52 L52,-52 L52,52 L-52,52 Z;
+                  M-43,-82 L89,-82 L89,50 L-43,50 Z;
+                  M-64,-118 L128,-118 L128,74 L-64,74 Z;
+                  M-115,-154 L161,-154 L161,122 L-115,122 Z;
+                  M-166,-166 L166,-166 L166,166 L-166,166 Z;
+                  M-161,-122 L115,-122 L115,154 L-161,154 Z;
+                  M-128,-74 L64,-74 L64,118 L-128,118 Z;
+                  M-89,-50 L43,-50 L43,82 L-89,82 Z;
+                  M-52,-52 L52,-52 L52,52 L-52,52 Z" />
+        <animate attributeName="stroke" values="#ff1e8a;#00f0ff;#8b5cf6;#ff1e8a" dur="6s" repeatCount="indefinite" />
+      </path>
     </g>
-    <g>
-      <polygon points="0,-110 -95,55 95,55" fill="none" stroke="url(#triGrad)" stroke-width="2.5" filter="url(#glow)">
-        <animateTransform attributeName="transform" type="rotate" from="120" to="-240" dur="25s" repeatCount="indefinite"/>
-      </polygon>
-    </g>
-    <g>
-      <polygon points="0,-110 -95,55 95,55" fill="none" stroke="url(#triGrad)" stroke-width="2.5" filter="url(#glow)">
-        <animateTransform attributeName="transform" type="rotate" from="240" to="-120" dur="20s" repeatCount="indefinite"/>
-      </polygon>
-    </g>
   </g>
 
-  <g filter="url(#glitchText)" opacity="0.35">
-    <text x="604" y="258" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="66" font-weight="900" letter-spacing="12" fill="#ff0066">MIGUEL MACEDO</text>
+  <g>
+    <rect x="260" y="202" width="680" height="96" rx="4" fill="#0a0a0c" fill-opacity="0.82" />
+    <line x1="260" y1="202" x2="940" y2="202" stroke="url(#border-grad)" stroke-width="1" />
+    <line x1="260" y1="298" x2="940" y2="298" stroke="url(#border-grad)" stroke-width="1" />
+    <path d="M 260 214 L 260 202 L 272 202 M 940 214 L 940 202 L 928 202 M 260 286 L 260 298 L 272 298 M 940 286 L 940 298 L 928 298" fill="none" stroke="#00f0ff" stroke-width="1.5" stroke-opacity="0.6" />
   </g>
-  <text x="600" y="254" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="66" font-weight="900" letter-spacing="12" fill="#ffffff" filter="url(#glow)">MIGUEL MACEDO</text>
-  <text x="600" y="308" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="15" letter-spacing="8" fill="#ffffff" opacity="0.75">FULL-STACK · EMBEDDED SYSTEMS</text>
 
-  <path d="M 24 24 L 60 24 M 24 24 L 24 60" stroke="#00e5ff" stroke-width="1.5" opacity="0.7"/>
-  <path d="M 1176 24 L 1140 24 M 1176 24 L 1176 60" stroke="#00e5ff" stroke-width="1.5" opacity="0.7"/>
-  <path d="M 24 476 L 60 476 M 24 476 L 24 440" stroke="#ff0066" stroke-width="1.5" opacity="0.7"/>
-  <path d="M 1176 476 L 1140 476 M 1176 476 L 1176 440" stroke="#ff0066" stroke-width="1.5" opacity="0.7"/>
-
-  <circle cx="600" cy="140" r="3" fill="#00e5ff">
-    <animate attributeName="cx" values="600;900;600;300;600" dur="12s" repeatCount="indefinite"/>
-    <animate attributeName="cy" values="140;250;360;250;140" dur="12s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values="1;0.2;1" dur="3s" repeatCount="indefinite"/>
-  </circle>
-  <circle cx="300" cy="250" r="2" fill="#ff0066">
-    <animate attributeName="cx" values="300;600;900;600;300" dur="15s" repeatCount="indefinite"/>
-    <animate attributeName="cy" values="250;140;250;360;250" dur="15s" repeatCount="indefinite"/>
-  </circle>
+  <g filter="url(#precision-aberration)">
+    <text x="607" y="267" text-anchor="middle" fill="#f8fafc" font-family="&#39;JetBrains Mono&#39;, &#39;Fira Code&#39;, &#39;SFMono-Regular&#39;, Consolas, monospace" font-size="52" font-weight="700" letter-spacing="14">MIGUEL MACEDO</text>
+  </g>
 </svg>
