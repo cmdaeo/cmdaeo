@@ -19,5 +19,5 @@
       <animateMotion dur="8s" repeatCount="indefinite" path="M -180 0 C -180 -50 -90 -70 0 0 C 90 70 180 50 180 0 C 180 -50 90 -70 0 0 C -90 70 -180 50 -180 0"/>
     </circle>
   </g>
-  <text x="600" y="135" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10" letter-spacing="8" fill="#ffffff" opacity="0.5">MMXXVI · CMD AEO</text>
+  <text x="600" y="135" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10" letter-spacing="8" fill="#ffffff" opacity="0.5">MMXXVI · CMDAEO</text>
 </svg>
