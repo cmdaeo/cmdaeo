@@ -1,250 +1,153 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="1200" height="320" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" width="1200" height="500">
   <defs>
-    <style type="text/css">
+    <!-- Fluid, Desaturated Gradient Palette -->
+    <linearGradient id="desat-rainbow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%">
+        <animate attributeName="stop-color" dur="18s" repeatCount="indefinite" values="#e09f9f; #bca3db; #9fb8e0; #9fd9e0; #aee09f; #e0d69f; #e0b99f; #e09f9f" />
+      </stop>
+      <stop offset="50%">
+        <animate attributeName="stop-color" dur="18s" repeatCount="indefinite" values="#9fb8e0; #9fd9e0; #aee09f; #e0d69f; #e0b99f; #e09f9f; #bca3db; #9fb8e0" />
+      </stop>
+      <stop offset="100%">
+        <animate attributeName="stop-color" dur="18s" repeatCount="indefinite" values="#aee09f; #e0d69f; #e0b99f; #e09f9f; #bca3db; #9fb8e0; #9fd9e0; #aee09f" />
+      </stop>
+    </linearGradient>
+
+    <style>
+      /* Technical Typography */
+      .txt-name {
+        font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+        font-size: 42px;
+        font-weight: 700;
+        letter-spacing: 8px;
+      }
       
-        .hero-name { fill: #f8fafc; }
-        .hero-role { fill: #94a3b8; }
-        @media (prefers-color-scheme: light) {
-          .hero-name { fill: #0f172a; }
-          .hero-role { fill: #475569; }
-        }
+      .txt-sub {
+        font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+        font-size: 13px;
+        font-weight: 400;
+        letter-spacing: 4px;
+      }
+
+      /* Base Theme Text Defaults (Adapts for Light Mode) */
+      .txt-name, .txt-sub { fill: #171717; }
+      .divider { fill: #171717; opacity: 0.15; }
       
+      /* Apply the dynamic gradient to all edges */
+      .edge-1, .edge-2, .edge-3, .edge-4 { 
+        stroke: url(#desat-rainbow); 
+        fill: none;
+        stroke-linecap: round;
+      }
+      /* Depth fading via opacity */
+      .edge-1 { stroke-opacity: 0.90; stroke-width: 1.5px; }
+      .edge-2 { stroke-opacity: 0.65; stroke-width: 1.5px; }
+      .edge-3 { stroke-opacity: 0.45; stroke-width: 1.5px; }
+      .edge-4 { stroke-opacity: 0.25; stroke-width: 1.5px; }
+      
+      /* Apply the gradient to the glass panes */
+      .pane-1, .pane-2, .pane-3, .pane-4 { 
+        fill: url(#desat-rainbow); 
+        stroke: url(#desat-rainbow); 
+        stroke-width: 1px;
+        stroke-linejoin: round;
+      }
+      .pane-1 { fill-opacity: 0.04; stroke-opacity: 0.25; }
+      .pane-2 { fill-opacity: 0.03; stroke-opacity: 0.20; }
+      .pane-3 { fill-opacity: 0.02; stroke-opacity: 0.15; }
+      .pane-4 { fill-opacity: 0.01; stroke-opacity: 0.10; }
+
+      /* Dark Theme (Adapts automatically based on OS/Browser preference) */
+      @media (prefers-color-scheme: dark) {
+        .txt-name, .txt-sub { fill: #f5f5f5; }
+        .divider { fill: #f5f5f5; opacity: 0.15; }
+      }
     </style>
-
-    <!-- Base Frame and Tapered Hairlines -->
-    <linearGradient id="ruleFade" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0" />
-      <stop offset="25%" stop-color="#38bdf8" stop-opacity="0.35" />
-      <stop offset="50%" stop-color="#818cf8" stop-opacity="0.75" />
-      <stop offset="75%" stop-color="#c084fc" stop-opacity="0.35" />
-      <stop offset="100%" stop-color="#c084fc" stop-opacity="0" />
-    </linearGradient>
-
-    <!-- Deep Ambient Environment Glow -->
-    <radialGradient id="envGlow" cx="50%" cy="45%" r="45%">
-      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.15" />
-      <stop offset="40%" stop-color="#38bdf8" stop-opacity="0.05" />
-      <stop offset="100%" stop-color="#020617" stop-opacity="0" />
-    </radialGradient>
-
-    <!-- Sweeping Metallic Edge Glint (Simulates Light catching razor edges) -->
-    <linearGradient id="edgeGlint" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.1" />
-      <stop offset="45%" stop-color="#818cf8" stop-opacity="0.2" />
-      <stop offset="50%" stop-color="#ffffff" stop-opacity="1" />
-      <stop offset="55%" stop-color="#c084fc" stop-opacity="0.2" />
-      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.1" />
-      <animate attributeName="x1" values="-100%; 200%; -100%" dur="5s" repeatCount="indefinite" />
-      <animate attributeName="x2" values="0%; 300%; 0%" dur="5s" repeatCount="indefinite" />
-      <animate attributeName="y1" values="-100%; 200%; -100%" dur="6.5s" repeatCount="indefinite" />
-      <animate attributeName="y2" values="0%; 300%; 0%" dur="6.5s" repeatCount="indefinite" />
-    </linearGradient>
-
-    <!-- Internal Core Facet Refractions (Drawn behind the normal map) -->
-    <linearGradient id="core-l" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.5" />
-      <stop offset="100%" stop-color="#1e1b4b" stop-opacity="0.95" />
-    </linearGradient>
-    <linearGradient id="core-r" x1="100%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#a855f7" stop-opacity="0.5" />
-      <stop offset="100%" stop-color="#1e1b4b" stop-opacity="0.95" />
-    </linearGradient>
-    <linearGradient id="core-c" x1="50%" y1="0%" x2="50%" y2="100%">
-      <stop offset="0%" stop-color="#4f46e5" stop-opacity="0.7" />
-      <stop offset="100%" stop-color="#020617" stop-opacity="0.95" />
-    </linearGradient>
-
-    <!-- 3D Normal Map Alpha Gradients (The Z-Depth Engine) -->
-    <linearGradient id="z-table" x1="50%" y1="0%" x2="50%" y2="100%">
-      <stop offset="0%" stop-color="#fff" stop-opacity="0.98" />
-      <stop offset="100%" stop-color="#fff" stop-opacity="0.98" />
-    </linearGradient>
-    <linearGradient id="z-crown-top" x1="50%" y1="0%" x2="50%" y2="100%">
-      <stop offset="0%" stop-color="#fff" stop-opacity="0.2" />
-      <stop offset="100%" stop-color="#fff" stop-opacity="0.95" />
-    </linearGradient>
-    <linearGradient id="z-crown-ul" x1="0%" y1="15%" x2="100%" y2="85%">
-      <stop offset="0%" stop-color="#fff" stop-opacity="0.1" />
-      <stop offset="100%" stop-color="#fff" stop-opacity="0.9" />
-    </linearGradient>
-    <linearGradient id="z-crown-ur" x1="100%" y1="15%" x2="0%" y2="85%">
-      <stop offset="0%" stop-color="#fff" stop-opacity="0.1" />
-      <stop offset="100%" stop-color="#fff" stop-opacity="0.9" />
-    </linearGradient>
-    <linearGradient id="z-girdle-l" x1="0%" y1="50%" x2="100%" y2="50%">
-      <stop offset="0%" stop-color="#fff" stop-opacity="0.15" />
-      <stop offset="100%" stop-color="#fff" stop-opacity="0.85" />
-    </linearGradient>
-    <linearGradient id="z-girdle-r" x1="100%" y1="50%" x2="0%" y2="50%">
-      <stop offset="0%" stop-color="#fff" stop-opacity="0.15" />
-      <stop offset="100%" stop-color="#fff" stop-opacity="0.85" />
-    </linearGradient>
-    <linearGradient id="z-pav-l" x1="0%" y1="0%" x2="85%" y2="75%">
-      <stop offset="0%" stop-color="#fff" stop-opacity="0.75" />
-      <stop offset="100%" stop-color="#fff" stop-opacity="0.15" />
-    </linearGradient>
-    <linearGradient id="z-pav-c" x1="50%" y1="0%" x2="50%" y2="100%">
-      <stop offset="0%" stop-color="#fff" stop-opacity="0.95" />
-      <stop offset="100%" stop-color="#fff" stop-opacity="0.05" />
-    </linearGradient>
-    <linearGradient id="z-pav-r" x1="100%" y1="0%" x2="15%" y2="75%">
-      <stop offset="0%" stop-color="#fff" stop-opacity="0.75" />
-      <stop offset="100%" stop-color="#fff" stop-opacity="0.15" />
-    </linearGradient>
-
-    <!-- ================================================================= -->
-    <!-- HYPER-REALISTIC MULTI-LIGHT RAYTRACING SHADER                     -->
-    <!-- ================================================================= -->
-    <filter id="insane-diamond-shader" x="-50%" y="-50%" width="200%" height="200%">
-      
-      <!-- 1. Generate Surface Normals from Alpha Heightmap -->
-      <feGaussianBlur in="SourceAlpha" stdDeviation="0.85" result="surface-normals" />
-
-      <!-- 2. Core Ambient/Diffuse Volume -->
-      <feDiffuseLighting in="surface-normals" surfaceScale="25" diffuseConstant="1.2" lighting-color="#1e1b4b" result="ambient-core">
-        <fePointLight x="600" y="200" z="250" />
-      </feDiffuseLighting>
-
-      <!-- 3. Key Light (Blazing White) - High Exponent for sharp metallic glints -->
-      <feSpecularLighting in="surface-normals" surfaceScale="35" specularConstant="3.5" specularExponent="110" lighting-color="#ffffff" result="spec-key">
-        <fePointLight x="400" y="-100" z="90">
-          <animate attributeName="x" values="300; 900; 300" dur="4.5s" repeatCount="indefinite" />
-          <animate attributeName="y" values="-100; 150; -100" dur="6.1s" repeatCount="indefinite" />
-          <animate attributeName="z" values="90; 160; 90" dur="3s" repeatCount="indefinite" />
-        </fePointLight>
-      </feSpecularLighting>
-
-      <!-- 4. Dispersion Flare 1 (Electric Cyan) -->
-      <feSpecularLighting in="surface-normals" surfaceScale="32" specularConstant="2.8" specularExponent="140" lighting-color="#22d3ee" result="spec-cyan">
-        <fePointLight x="900" y="150" z="80">
-          <animate attributeName="x" values="900; 250; 900" dur="5.7s" repeatCount="indefinite" />
-          <animate attributeName="y" values="150; -50; 150" dur="4.8s" repeatCount="indefinite" />
-        </fePointLight>
-      </feSpecularLighting>
-
-      <!-- 5. Dispersion Flare 2 (Deep Violet) -->
-      <feSpecularLighting in="surface-normals" surfaceScale="32" specularConstant="2.8" specularExponent="140" lighting-color="#c084fc" result="spec-purple">
-        <fePointLight x="300" y="50" z="100">
-          <animate attributeName="x" values="250; 950; 250" dur="7.3s" repeatCount="indefinite" />
-          <animate attributeName="z" values="100; 50; 100" dur="3.5s" repeatCount="indefinite" />
-        </fePointLight>
-      </feSpecularLighting>
-
-      <!-- 6. HDR Light Blooming (Combine all moving lights) -->
-      <feComposite in="ambient-core" in2="spec-key" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="lit-stage1" />
-      <feComposite in="lit-stage1" in2="spec-cyan" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="lit-stage2" />
-      <feComposite in="lit-stage2" in2="spec-purple" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="lit-final" />
-
-      <!-- 7. Clip Lighting Strictly to the Diamond Silhouette -->
-      <feComponentTransfer in="SourceAlpha" result="sharp-mask">
-        <feFuncA type="linear" slope="30" intercept="0" />
-      </feComponentTransfer>
-      <feComposite in="lit-final" in2="sharp-mask" operator="in" />
-    </filter>
   </defs>
 
-  <!-- Ambient Sub-Glow -->
-  <ellipse cx="600" cy="150" rx="460" ry="140" fill="url(#envGlow)">
-    <animate attributeName="opacity" values="0.6; 1; 0.6" dur="5s" repeatCount="indefinite" />
-  </ellipse>
+  <!-- The Tesseract Animation -->
+  <g transform="translate(600, 190) scale(0.85)">
+    <g>
+      <!-- Slow rotation of the structure through the color gradient -->
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="120s" repeatCount="indefinite" />
 
-  <!-- Connecting Architectural Lines -->
-  <line x1="180" y1="68" x2="560" y2="68" stroke="url(#ruleFade)" stroke-width="1.25" />
-  <line x1="640" y1="68" x2="1020" y2="68" stroke="url(#ruleFade)" stroke-width="1.25" />
+      <!-- Outer structural connections -->
+      <path class="edge-1" d="M-64,-118 L-166,-166 M128,-118 L166,-166 M128,74 L166,166 M-64,74 L-166,166">
+        <animate attributeName="d" dur="12s" repeatCount="indefinite" values="M-64,-118 L-166,-166 M128,-118 L166,-166 M128,74 L166,166 M-64,74 L-166,166;
+                  M-115,-154 L-161,-122 M161,-154 L115,-122 M161,122 L115,154 M-115,122 L-161,154;
+                  M-166,-166 L-128,-74 M166,-166 L64,-74 M166,166 L64,118 M-166,166 L-128,118;
+                  M-161,-122 L-89,-50 M115,-122 L43,-50 M115,154 L43,82 M-161,154 L-89,82;
+                  M-128,-74 L-52,-52 M64,-74 L52,-52 M64,118 L52,52 M-128,118 L-52,52;
+                  M-89,-50 L-43,-82 M43,-50 L89,-82 M43,82 L89,50 M-89,82 L-43,50;
+                  M-52,-52 L-64,-118 M52,-52 L128,-118 M52,52 L128,74 M-52,52 L-64,74;
+                  M-43,-82 L-115,-154 M89,-82 L161,-154 M89,50 L161,122 M-43,50 L-115,122;
+                  M-64,-118 L-166,-166 M128,-118 L166,-166 M128,74 L166,166 M-64,74 L-166,166" />
+      </path>
 
-  <!-- ================================================================= -->
-  <!-- 3D DIAMOND ASSEMBLY                                               -->
-  <!-- ================================================================= -->
-  <g transform="translate(600, 68)">
-    
-    <!-- LAYER 1: Deep Internal Refraction Base -->
-    <g opacity="0.95">
-      <polygon points="0,-33 -33,-3 0,34" fill="url(#core-l)" />
-      <polygon points="0,-33 33,-3 0,34" fill="url(#core-r)" />
-      <polygon points="-18,-8 18,-8 0,34" fill="url(#core-c)" />
-      <!-- Internal Shadow Seams -->
-      <path d="M-18,-8 L0,34 L18,-8" fill="none" stroke="#0f172a" stroke-width="0.75" stroke-opacity="0.8" />
-      <line x1="0" y1="-33" x2="0" y2="34" stroke="#0f172a" stroke-width="0.5" stroke-opacity="0.5" />
+      <!-- Inner frame connections -->
+      <path class="edge-2" d="M-166,-166 L-128,-74 M166,-166 L64,-74 M166,166 L64,118 M-166,166 L-128,118">
+        <animate attributeName="d" dur="12s" repeatCount="indefinite" values="M-166,-166 L-128,-74 M166,-166 L64,-74 M166,166 L64,118 M-166,166 L-128,118;
+                  M-161,-122 L-89,-50 M115,-122 L43,-50 M115,154 L43,82 M-161,154 L-89,82;
+                  M-128,-74 L-52,-52 M64,-74 L52,-52 M64,118 L52,52 M-128,118 L-52,52;
+                  M-89,-50 L-43,-82 M43,-50 L89,-82 M43,82 L89,50 M-89,82 L-43,50;
+                  M-52,-52 L-64,-118 M52,-52 L128,-118 M52,52 L128,74 M-52,52 L-64,74;
+                  M-43,-82 L-115,-154 M89,-82 L161,-154 M89,50 L161,122 M-43,50 L-115,122;
+                  M-64,-118 L-166,-166 M128,-118 L166,-166 M128,74 L166,166 M-64,74 L-166,166;
+                  M-115,-154 L-161,-122 M161,-154 L115,-122 M161,122 L115,154 M-115,122 L-161,154;
+                  M-166,-166 L-128,-74 M166,-166 L64,-74 M166,166 L64,118 M-166,166 L-128,118" />
+      </path>
+
+      <!-- Depth projection edges -->
+      <path class="edge-3" d="M-128,-74 L-52,-52 M64,-74 L52,-52 M64,118 L52,52 M-128,118 L-52,52">
+        <animate attributeName="d" dur="12s" repeatCount="indefinite" values="M-128,-74 L-52,-52 M64,-74 L52,-52 M64,118 L52,52 M-128,118 L-52,52;
+                  M-89,-50 L-43,-82 M43,-50 L89,-82 M43,82 L89,50 M-89,82 L-43,50;
+                  M-52,-52 L-64,-118 M52,-52 L128,-118 M52,52 L128,74 M-52,52 L-64,74;
+                  M-43,-82 L-115,-154 M89,-82 L161,-154 M89,50 L161,122 M-43,50 L-115,122;
+                  M-64,-118 L-166,-166 M128,-118 L166,-166 M128,74 L166,166 M-64,74 L-166,166;
+                  M-115,-154 L-161,-122 M161,-154 L115,-122 M161,122 L115,154 M-115,122 L-161,154;
+                  M-166,-166 L-128,-74 M166,-166 L64,-74 M166,166 L64,118 M-166,166 L-128,118;
+                  M-161,-122 L-89,-50 M115,-122 L43,-50 M115,154 L43,82 M-161,154 L-89,82;
+                  M-128,-74 L-52,-52 M64,-74 L52,-52 M64,118 L52,52 M-128,118 L-52,52" />
+      </path>
+
+      <!-- Core structural edges -->
+      <path class="edge-4" d="M-52,-52 L-64,-118 M52,-52 L128,-118 M52,52 L128,74 M-52,52 L-64,74">
+        <animate attributeName="d" dur="12s" repeatCount="indefinite" values="M-52,-52 L-64,-118 M52,-52 L128,-118 M52,52 L128,74 M-52,52 L-64,74;
+                  M-43,-82 L-115,-154 M89,-82 L161,-154 M89,50 L161,122 M-43,50 L-115,122;
+                  M-64,-118 L-166,-166 M128,-118 L166,-166 M128,74 L166,166 M-64,74 L-166,166;
+                  M-115,-154 L-161,-122 M161,-154 L115,-122 M161,122 L115,154 M-115,122 L-161,154;
+                  M-166,-166 L-128,-74 M166,-166 L64,-74 M166,166 L64,118 M-166,166 L-128,118;
+                  M-161,-122 L-89,-50 M115,-122 L43,-50 M115,154 L43,82 M-161,154 L-89,82;
+                  M-128,-74 L-52,-52 M64,-74 L52,-52 M64,118 L52,52 M-128,118 L-52,52;
+                  M-89,-50 L-43,-82 M43,-50 L89,-82 M43,82 L89,50 M-89,82 L-43,50;
+                  M-52,-52 L-64,-118 M52,-52 L128,-118 M52,52 L128,74 M-52,52 L-64,74" />
+      </path>
+
+      <!-- Glass-like transparent planar fills -->
+      <path class="pane-1" d="M-64,-118 L128,-118 L128,74 L-64,74 Z">
+        <animate attributeName="d" dur="12s" repeatCount="indefinite" values="M-64,-118 L128,-118 L128,74 L-64,74 Z; M-115,-154 L161,-154 L161,122 L-115,122 Z; M-166,-166 L166,-166 L166,166 L-166,166 Z; M-161,-122 L115,-122 L115,154 L-161,154 Z; M-128,-74 L64,-74 L64,118 L-128,118 Z; M-89,-50 L43,-50 L43,82 L-89,82 Z; M-52,-52 L52,-52 L52,52 L-52,52 Z; M-43,-82 L89,-82 L89,50 L-43,50 Z; M-64,-118 L128,-118 L128,74 L-64,74 Z" />
+      </path>
+
+      <path class="pane-2" d="M-166,-166 L166,-166 L166,166 L-166,166 Z">
+        <animate attributeName="d" dur="12s" repeatCount="indefinite" values="M-166,-166 L166,-166 L166,166 L-166,166 Z; M-161,-122 L115,-122 L115,154 L-161,154 Z; M-128,-74 L64,-74 L64,118 L-128,118 Z; M-89,-50 L43,-50 L43,82 L-89,82 Z; M-52,-52 L52,-52 L52,52 L-52,52 Z; M-43,-82 L89,-82 L89,50 L-43,50 Z; M-64,-118 L128,-118 L128,74 L-64,74 Z; M-115,-154 L161,-154 L161,122 L-115,122 Z; M-166,-166 L166,-166 L166,166 L-166,166 Z" />
+      </path>
+
+      <path class="pane-3" d="M-128,-74 L64,-74 L64,118 L-128,118 Z">
+        <animate attributeName="d" dur="12s" repeatCount="indefinite" values="M-128,-74 L64,-74 L64,118 L-128,118 Z; M-89,-50 L43,-50 L43,82 L-89,82 Z; M-52,-52 L52,-52 L52,52 L-52,52 Z; M-43,-82 L89,-82 L89,50 L-43,50 Z; M-64,-118 L128,-118 L128,74 L-64,74 Z; M-115,-154 L161,-154 L161,122 L-115,122 Z; M-166,-166 L166,-166 L166,166 L-166,166 Z; M-161,-122 L115,-122 L115,154 L-161,154 Z; M-128,-74 L64,-74 L64,118 L-128,118 Z" />
+      </path>
+
+      <path class="pane-4" d="M-52,-52 L52,-52 L52,52 L-52,52 Z">
+        <animate attributeName="d" dur="12s" repeatCount="indefinite" values="M-52,-52 L52,-52 L52,52 L-52,52 Z; M-43,-82 L89,-82 L89,50 L-43,50 Z; M-64,-118 L128,-118 L128,74 L-64,74 Z; M-115,-154 L161,-154 L161,122 L-115,122 Z; M-166,-166 L166,-166 L166,166 L-166,166 Z; M-161,-122 L115,-122 L115,154 L-161,154 Z; M-128,-74 L64,-74 L64,118 L-128,118 Z; M-89,-50 L43,-50 L43,82 L-89,82 Z; M-52,-52 L52,-52 L52,52 L-52,52 Z" />
+      </path>
     </g>
-
-    <!-- LAYER 2: Front Shell (The Raytracing Heightmap & Lens) -->
-    <!-- Using mix-blend-mode (screen/plus-lighter) over Layer 1 creates true glass depth -->
-    <g filter="url(#insane-diamond-shader)" style="mix-blend-mode: screen;">
-      <!-- Crown Top -->
-      <polygon points="0,-33 12,-19 -12,-19" fill="url(#z-crown-top)" />
-      <!-- Crown Upper Flanks -->
-      <polygon points="0,-33 -12,-19 -25,-17" fill="url(#z-crown-ul)" />
-      <polygon points="0,-33 25,-17 12,-19" fill="url(#z-crown-ur)" />
-      <!-- Center Table -->
-      <polygon points="-12,-19 12,-19 18,-8 -18,-8" fill="url(#z-table)" />
-      <!-- Crown Lower Flanks -->
-      <polygon points="-25,-17 -12,-19 -18,-8 -33,-3" fill="url(#z-crown-ul)" />
-      <polygon points="25,-17 33,-3 18,-8 12,-19" fill="url(#z-crown-ur)" />
-      <!-- Girdles -->
-      <polygon points="-33,-3 -18,-8 -13.5,-1" fill="url(#z-girdle-l)" />
-      <polygon points="-18,-8 18,-8 13.5,-1 -13.5,-1" fill="url(#z-table)" />
-      <polygon points="18,-8 33,-3 13.5,-1" fill="url(#z-girdle-r)" />
-      <!-- Pavilion Lower Cones -->
-      <polygon points="-33,-3 -13.5,-1 0,34" fill="url(#z-pav-l)" />
-      <polygon points="-13.5,-1 13.5,-1 0,34" fill="url(#z-pav-c)" />
-      <polygon points="13.5,-1 33,-3 0,34" fill="url(#z-pav-r)" />
-    </g>
-
-    <!-- LAYER 3: Razor-Sharp Animated Edge Glints -->
-    <g stroke="url(#edgeGlint)" stroke-width="0.85" stroke-linejoin="round" stroke-linecap="round">
-      <polygon points="0,-33 25,-17 33,-3 0,34 -33,-3 -25,-17" />
-      <polygon points="-12,-19 12,-19 18,-8 -18,-8" />
-      <line x1="0" y1="-33" x2="-12" y2="-19" />
-      <line x1="0" y1="-33" x2="12" y2="-19" />
-      <line x1="-25" y1="-17" x2="-12" y2="-19" />
-      <line x1="25" y1="-17" x2="12" y2="-19" />
-      <line x1="-33" y1="-3" x2="-18" y2="-8" />
-      <line x1="33" y1="-3" x2="18" y2="-8" />
-      <line x1="-33" y1="-3" x2="-13.5" y2="-1" />
-      <line x1="-18" y1="-8" x2="-13.5" y2="-1" />
-      <line x1="18" y1="-8" x2="13.5" y2="-1" />
-      <line x1="33" y1="-3" x2="13.5" y2="-1" />
-      <line x1="-13.5" y1="-1" x2="13.5" y2="-1" />
-      <line x1="-13.5" y1="-1" x2="0" y2="34" />
-      <line x1="13.5" y1="-1" x2="0" y2="34" />
-    </g>
-
-    <!-- Layer 4: Extreme Specular Corner Flares (Flashes when light hits top/bottom) -->
-    <circle cx="0" cy="-33" r="1.5" fill="#ffffff">
-      <animate attributeName="opacity" values="1;0;1;0.5;1" dur="4.5s" repeatCount="indefinite" />
-    </circle>
-    <circle cx="0" cy="34" r="1.5" fill="#38bdf8">
-      <animate attributeName="opacity" values="0.2;1;0.2;0.8;0.2" dur="6.1s" repeatCount="indefinite" />
-    </circle>
   </g>
 
-  <!-- ================================================================= -->
-  <!-- ARCHITECTURAL TYPOGRAPHY FRAME                                    -->
-  <!-- ================================================================= -->
-  <g>
-    <!-- Frame Rails -->
-    <line x1="240" y1="130" x2="960" y2="130" stroke="url(#ruleFade)" stroke-width="1" opacity="0.6" />
-    <line x1="240" y1="214" x2="960" y2="214" stroke="url(#ruleFade)" stroke-width="1" opacity="0.6" />
-
-    <!-- Cyan/Purple Registration Brackets -->
-    <path d="M 240 140 L 240 130 L 250 130 M 960 140 L 960 130 L 950 130" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.6" fill="none" />
-    <path d="M 240 204 L 240 214 L 250 214 M 960 204 L 960 214 L 950 214" stroke="#c084fc" stroke-width="1.5" stroke-opacity="0.6" fill="none" />
-
-    <!-- Name Label -->
-    <text x="606" y="184" text-anchor="middle" class="hero-name" font-family="&#39;JetBrains Mono&#39;, &#39;SFMono-Regular&#39;, ui-monospace, Menlo, Consolas, monospace" font-size="46" font-weight="700" letter-spacing="14">
-      MIGUEL MACEDO
-    </text>
-  </g>
-
-  <!-- Subtitle Area -->
-  <g transform="translate(600, 252)">
-    <line x1="-280" y1="-4" x2="-165" y2="-4" stroke="url(#ruleFade)" stroke-width="1" />
-    <line x1="165" y1="-4" x2="280" y2="-4" stroke="url(#ruleFade)" stroke-width="1" />
-    <text x="3.5" y="0" text-anchor="middle" class="hero-role" font-family="&#39;JetBrains Mono&#39;, &#39;SFMono-Regular&#39;, ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="500" letter-spacing="8">
-      FULL STACK DEVELOPER
-    </text>
-  </g>
-
-  <!-- Base Connection Trace -->
-  <path stroke="url(#ruleFade)" stroke-width="1.25" fill="none" d="M 60 298 L 574 298 L 584 306 L 616 306 L 626 298 L 1140 298" />
+  <!-- Technical Schematic Typography -->
+  <text x="600" y="405" text-anchor="middle" class="txt-name">MIGUEL MACEDO</text>
+  
+  <rect x="350" y="430" width="500" height="1" class="divider" />
+  
+  <text x="600" y="460" text-anchor="middle" class="txt-sub">
+    SOFTWARE | HARDWARE | EVERYTHING
+  </text>
 </svg>
