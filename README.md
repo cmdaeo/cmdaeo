@@ -53,16 +53,7 @@
 
 <div align="center">
 
-<img src="https://skillicons.dev/icons?i=ts,js,react,nodejs,express,postgres,rust,java,py,cpp,git,linux,docker&theme=dark" />
-
-</div>
-
-<img src="https://raw.githubusercontent.com/cmdaeo/cmdaeo/main/assets/divider.svg" width="100%" />
-
-<div align="center">
-
-<img src="https://github-readme-stats.vercel.app/api?username=cmdaeo&show_icons=true&bg_color=0a0a0c&title_color=ff0066&icon_color=00e5ff&text_color=ffffff&border_color=a020f0&count_private=true" height="165" />
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=cmdaeo&background=0a0a0c&stroke=a020f0&ring=ff0066&fire=00e5ff&currStreakLabel=ffffff&sideLabels=ffffff&dates=ffffff" height="165" />
+<img src="https://skillicons.dev/icons?i=ts,js,react,nodejs,express,postgres,rust,java,py,cpp,git,linux&theme=dark" />
 
 </div>
 
