@@ -4,234 +4,247 @@
       
         .hero-name { fill: #f8fafc; }
         .hero-role { fill: #94a3b8; }
-        .hero-tag  { fill: #64748b; }
-        .glass-shell { mix-blend-mode: screen; }
-        
         @media (prefers-color-scheme: light) {
           .hero-name { fill: #0f172a; }
           .hero-role { fill: #475569; }
-          .hero-tag  { fill: #64748b; }
         }
       
     </style>
 
-    <!-- Tapered Architectural Hairlines -->
-    <linearGradient id="hdrRuleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+    <!-- Base Frame and Tapered Hairlines -->
+    <linearGradient id="ruleFade" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#38bdf8" stop-opacity="0" />
-      <stop offset="22%" stop-color="#38bdf8" stop-opacity="0.25" />
+      <stop offset="25%" stop-color="#38bdf8" stop-opacity="0.35" />
       <stop offset="50%" stop-color="#818cf8" stop-opacity="0.75" />
-      <stop offset="78%" stop-color="#c084fc" stop-opacity="0.25" />
+      <stop offset="75%" stop-color="#c084fc" stop-opacity="0.35" />
       <stop offset="100%" stop-color="#c084fc" stop-opacity="0" />
     </linearGradient>
 
-    <!-- Subtle Name Frame Gradient -->
-    <linearGradient id="frameGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.08" />
-      <stop offset="25%" stop-color="#38bdf8" stop-opacity="0.4" />
-      <stop offset="50%" stop-color="#818cf8" stop-opacity="0.6" />
-      <stop offset="75%" stop-color="#c084fc" stop-opacity="0.4" />
-      <stop offset="100%" stop-color="#c084fc" stop-opacity="0.08" />
-    </linearGradient>
-
-    <!-- Wing Accents -->
-    <linearGradient id="wingLeft" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0" />
-      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.5" />
-    </linearGradient>
-    <linearGradient id="wingRight" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#c084fc" stop-opacity="0.5" />
-      <stop offset="100%" stop-color="#c084fc" stop-opacity="0" />
-    </linearGradient>
-
-    <!-- Environment Glow -->
-    <radialGradient id="hdrAmbient" cx="50%" cy="46%" r="48%">
-      <stop offset="0%" stop-color="#818cf8" stop-opacity="0.12" />
-      <stop offset="50%" stop-color="#38bdf8" stop-opacity="0.03" />
-      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
+    <!-- Deep Ambient Environment Glow -->
+    <radialGradient id="envGlow" cx="50%" cy="45%" r="45%">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.15" />
+      <stop offset="40%" stop-color="#38bdf8" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#020617" stop-opacity="0" />
     </radialGradient>
 
-    <!-- Internal Refraction Gradients (Deep colors inside the diamond) -->
-    <linearGradient id="internal-l" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.3" />
-      <stop offset="100%" stop-color="#1e1b4b" stop-opacity="0.9" />
+    <!-- Sweeping Metallic Edge Glint (Simulates Light catching razor edges) -->
+    <linearGradient id="edgeGlint" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.1" />
+      <stop offset="45%" stop-color="#818cf8" stop-opacity="0.2" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="55%" stop-color="#c084fc" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.1" />
+      <animate attributeName="x1" values="-100%; 200%; -100%" dur="5s" repeatCount="indefinite" />
+      <animate attributeName="x2" values="0%; 300%; 0%" dur="5s" repeatCount="indefinite" />
+      <animate attributeName="y1" values="-100%; 200%; -100%" dur="6.5s" repeatCount="indefinite" />
+      <animate attributeName="y2" values="0%; 300%; 0%" dur="6.5s" repeatCount="indefinite" />
     </linearGradient>
-    <linearGradient id="internal-r" x1="100%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#a855f7" stop-opacity="0.3" />
-      <stop offset="100%" stop-color="#1e1b4b" stop-opacity="0.9" />
+
+    <!-- Internal Core Facet Refractions (Drawn behind the normal map) -->
+    <linearGradient id="core-l" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#1e1b4b" stop-opacity="0.95" />
     </linearGradient>
-    <linearGradient id="internal-core" x1="50%" y1="0%" x2="50%" y2="100%">
-      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.4" />
+    <linearGradient id="core-r" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#a855f7" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#1e1b4b" stop-opacity="0.95" />
+    </linearGradient>
+    <linearGradient id="core-c" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#4f46e5" stop-opacity="0.7" />
       <stop offset="100%" stop-color="#020617" stop-opacity="0.95" />
     </linearGradient>
 
-    <!-- Z-Depth Normal Maps (Alpha Channel = Elevation) -->
-    <linearGradient id="z-table" x1="0%" y1="0%" x2="0%" y2="100%">
+    <!-- 3D Normal Map Alpha Gradients (The Z-Depth Engine) -->
+    <linearGradient id="z-table" x1="50%" y1="0%" x2="50%" y2="100%">
       <stop offset="0%" stop-color="#fff" stop-opacity="0.98" />
       <stop offset="100%" stop-color="#fff" stop-opacity="0.98" />
     </linearGradient>
-    <linearGradient id="z-crown-t" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#fff" stop-opacity="0.5" />
+    <linearGradient id="z-crown-top" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.2" />
       <stop offset="100%" stop-color="#fff" stop-opacity="0.95" />
     </linearGradient>
-    <linearGradient id="z-crown-l" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#fff" stop-opacity="0.3" />
+    <linearGradient id="z-crown-ul" x1="0%" y1="15%" x2="100%" y2="85%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.1" />
       <stop offset="100%" stop-color="#fff" stop-opacity="0.9" />
     </linearGradient>
-    <linearGradient id="z-crown-r" x1="100%" y1="100%" x2="0%" y2="0%">
-      <stop offset="0%" stop-color="#fff" stop-opacity="0.3" />
+    <linearGradient id="z-crown-ur" x1="100%" y1="15%" x2="0%" y2="85%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.1" />
       <stop offset="100%" stop-color="#fff" stop-opacity="0.9" />
-    </linearGradient>
-    <linearGradient id="z-pav-c" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#fff" stop-opacity="0.95" />
-      <stop offset="100%" stop-color="#fff" stop-opacity="0.1" />
-    </linearGradient>
-    <linearGradient id="z-pav-l" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#fff" stop-opacity="0.7" />
-      <stop offset="100%" stop-color="#fff" stop-opacity="0.0" />
-    </linearGradient>
-    <linearGradient id="z-pav-r" x1="100%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#fff" stop-opacity="0.7" />
-      <stop offset="100%" stop-color="#fff" stop-opacity="0.0" />
     </linearGradient>
     <linearGradient id="z-girdle-l" x1="0%" y1="50%" x2="100%" y2="50%">
-      <stop offset="0%" stop-color="#fff" stop-opacity="0.2" />
-      <stop offset="100%" stop-color="#fff" stop-opacity="0.8" />
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#fff" stop-opacity="0.85" />
     </linearGradient>
     <linearGradient id="z-girdle-r" x1="100%" y1="50%" x2="0%" y2="50%">
-      <stop offset="0%" stop-color="#fff" stop-opacity="0.2" />
-      <stop offset="100%" stop-color="#fff" stop-opacity="0.8" />
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#fff" stop-opacity="0.85" />
+    </linearGradient>
+    <linearGradient id="z-pav-l" x1="0%" y1="0%" x2="85%" y2="75%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.75" />
+      <stop offset="100%" stop-color="#fff" stop-opacity="0.15" />
+    </linearGradient>
+    <linearGradient id="z-pav-c" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#fff" stop-opacity="0.05" />
+    </linearGradient>
+    <linearGradient id="z-pav-r" x1="100%" y1="0%" x2="15%" y2="75%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.75" />
+      <stop offset="100%" stop-color="#fff" stop-opacity="0.15" />
     </linearGradient>
 
-    <!-- HYPER-REALISTIC METALLIC / GLASS RAYTRACING SHADER -->
-    <filter id="real-diamond-shader" x="-50%" y="-50%" width="200%" height="200%">
-      <!-- 1. Heightmap blur to create micro-bevels at facet seams -->
-      <feGaussianBlur in="SourceAlpha" stdDeviation="0.7" result="bevel" />
+    <!-- ================================================================= -->
+    <!-- HYPER-REALISTIC MULTI-LIGHT RAYTRACING SHADER                     -->
+    <!-- ================================================================= -->
+    <filter id="insane-diamond-shader" x="-50%" y="-50%" width="200%" height="200%">
+      
+      <!-- 1. Generate Surface Normals from Alpha Heightmap -->
+      <feGaussianBlur in="SourceAlpha" stdDeviation="0.85" result="surface-normals" />
 
-      <!-- 2. Base Diffuse Surface Volume (Soft Ambient Volume) -->
-      <feDiffuseLighting in="bevel" surfaceScale="18" diffuseConstant="0.8" lighting-color="#e2e8f0" result="ambient">
-        <fePointLight x="600" y="68" z="200" />
+      <!-- 2. Core Ambient/Diffuse Volume -->
+      <feDiffuseLighting in="surface-normals" surfaceScale="25" diffuseConstant="1.2" lighting-color="#1e1b4b" result="ambient-core">
+        <fePointLight x="600" y="200" z="250" />
       </feDiffuseLighting>
 
-      <!-- 3. Brilliant White Key Light (Sharp Specular Glints) -->
-      <feSpecularLighting in="bevel" surfaceScale="22" specularConstant="2.8" specularExponent="110" lighting-color="#ffffff" result="spec-key">
-        <fePointLight x="600" y="-150" z="130">
-          <animate attributeName="x" values="400; 800; 400" dur="7.5s" repeatCount="indefinite" />
-          <animate attributeName="y" values="-150; 50; -150" dur="11.3s" repeatCount="indefinite" />
+      <!-- 3. Key Light (Blazing White) - High Exponent for sharp metallic glints -->
+      <feSpecularLighting in="surface-normals" surfaceScale="35" specularConstant="3.5" specularExponent="110" lighting-color="#ffffff" result="spec-key">
+        <fePointLight x="400" y="-100" z="90">
+          <animate attributeName="x" values="300; 900; 300" dur="4.5s" repeatCount="indefinite" />
+          <animate attributeName="y" values="-100; 150; -100" dur="6.1s" repeatCount="indefinite" />
+          <animate attributeName="z" values="90; 160; 90" dur="3s" repeatCount="indefinite" />
         </fePointLight>
       </feSpecularLighting>
 
-      <!-- 4. Cyan Chromatic Dispersion (Simulating Prism Fire) -->
-      <feSpecularLighting in="bevel" surfaceScale="25" specularConstant="2.2" specularExponent="140" lighting-color="#22d3ee" result="spec-cyan">
-        <fePointLight x="500" y="200" z="90">
-          <animate attributeName="x" values="850; 350; 850" dur="5.8s" repeatCount="indefinite" />
+      <!-- 4. Dispersion Flare 1 (Electric Cyan) -->
+      <feSpecularLighting in="surface-normals" surfaceScale="32" specularConstant="2.8" specularExponent="140" lighting-color="#22d3ee" result="spec-cyan">
+        <fePointLight x="900" y="150" z="80">
+          <animate attributeName="x" values="900; 250; 900" dur="5.7s" repeatCount="indefinite" />
+          <animate attributeName="y" values="150; -50; 150" dur="4.8s" repeatCount="indefinite" />
         </fePointLight>
       </feSpecularLighting>
 
-      <!-- 5. Purple Chromatic Dispersion (Simulating Prism Fire) -->
-      <feSpecularLighting in="bevel" surfaceScale="25" specularConstant="2.2" specularExponent="140" lighting-color="#c084fc" result="spec-purple">
-        <fePointLight x="700" y="-50" z="90">
-          <animate attributeName="x" values="300; 900; 300" dur="8.2s" repeatCount="indefinite" />
+      <!-- 5. Dispersion Flare 2 (Deep Violet) -->
+      <feSpecularLighting in="surface-normals" surfaceScale="32" specularConstant="2.8" specularExponent="140" lighting-color="#c084fc" result="spec-purple">
+        <fePointLight x="300" y="50" z="100">
+          <animate attributeName="x" values="250; 950; 250" dur="7.3s" repeatCount="indefinite" />
+          <animate attributeName="z" values="100; 50; 100" dur="3.5s" repeatCount="indefinite" />
         </fePointLight>
       </feSpecularLighting>
 
-      <!-- 6. Combine all Raytraced Lights -->
-      <feComposite in="ambient" in2="spec-key" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="lit-1" />
-      <feComposite in="lit-1" in2="spec-cyan" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="lit-2" />
-      <feComposite in="lit-2" in2="spec-purple" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="lit-final" />
+      <!-- 6. HDR Light Blooming (Combine all moving lights) -->
+      <feComposite in="ambient-core" in2="spec-key" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="lit-stage1" />
+      <feComposite in="lit-stage1" in2="spec-cyan" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="lit-stage2" />
+      <feComposite in="lit-stage2" in2="spec-purple" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="lit-final" />
 
-      <!-- 7. Clip perfectly to the Diamond's Silhouette -->
-      <feComposite in="lit-final" in2="SourceAlpha" operator="in" />
+      <!-- 7. Clip Lighting Strictly to the Diamond Silhouette -->
+      <feComponentTransfer in="SourceAlpha" result="sharp-mask">
+        <feFuncA type="linear" slope="30" intercept="0" />
+      </feComponentTransfer>
+      <feComposite in="lit-final" in2="sharp-mask" operator="in" />
     </filter>
   </defs>
 
-  <!-- Ambient Backdrop -->
-  <ellipse cx="600" cy="150" rx="420" ry="130" fill="url(#hdrAmbient)">
-    <animate attributeName="opacity" values="0.7; 1; 0.7" dur="6s" repeatCount="indefinite" />
+  <!-- Ambient Sub-Glow -->
+  <ellipse cx="600" cy="150" rx="460" ry="140" fill="url(#envGlow)">
+    <animate attributeName="opacity" values="0.6; 1; 0.6" dur="5s" repeatCount="indefinite" />
   </ellipse>
 
-  <!-- Architectural Frame Rules connecting to Diamond -->
-  <line x1="200" y1="68" x2="550" y2="68" stroke="url(#hdrRuleGrad)" stroke-width="1" />
-  <line x1="650" y1="68" x2="1000" y2="68" stroke="url(#hdrRuleGrad)" stroke-width="1" />
+  <!-- Connecting Architectural Lines -->
+  <line x1="180" y1="68" x2="560" y2="68" stroke="url(#ruleFade)" stroke-width="1.25" />
+  <line x1="640" y1="68" x2="1020" y2="68" stroke="url(#ruleFade)" stroke-width="1.25" />
 
-  <!-- 3D Diamond Assembly -->
+  <!-- ================================================================= -->
+  <!-- 3D DIAMOND ASSEMBLY                                               -->
+  <!-- ================================================================= -->
   <g transform="translate(600, 68)">
     
-    <!-- 1. Deep Internal Refraction Layer (The "Inside" of the glass) -->
-    <g opacity="0.85">
-      <polygon points="0,-31.5 -31.5,-3.75 0,33" fill="url(#internal-l)" />
-      <polygon points="0,-31.5 31.5,-3.75 0,33" fill="url(#internal-r)" />
-      <polygon points="-17.25,-8.25 17.25,-8.25 0,33" fill="url(#internal-core)" />
-      <path d="M-17.25,-8.25 L0,33 L17.25,-8.25" fill="none" stroke="#6366f1" stroke-width="0.5" stroke-opacity="0.5" />
+    <!-- LAYER 1: Deep Internal Refraction Base -->
+    <g opacity="0.95">
+      <polygon points="0,-33 -33,-3 0,34" fill="url(#core-l)" />
+      <polygon points="0,-33 33,-3 0,34" fill="url(#core-r)" />
+      <polygon points="-18,-8 18,-8 0,34" fill="url(#core-c)" />
+      <!-- Internal Shadow Seams -->
+      <path d="M-18,-8 L0,34 L18,-8" fill="none" stroke="#0f172a" stroke-width="0.75" stroke-opacity="0.8" />
+      <line x1="0" y1="-33" x2="0" y2="34" stroke="#0f172a" stroke-width="0.5" stroke-opacity="0.5" />
     </g>
 
-    <!-- 2. Raytraced Metallic/Glass Front Shell (Normal Mapped) -->
-    <!-- mix-blend-mode: screen creates the physical transparency illusion -->
-    <g filter="url(#real-diamond-shader)" class="glass-shell">
+    <!-- LAYER 2: Front Shell (The Raytracing Heightmap & Lens) -->
+    <!-- Using mix-blend-mode (screen/plus-lighter) over Layer 1 creates true glass depth -->
+    <g filter="url(#insane-diamond-shader)" style="mix-blend-mode: screen;">
       <!-- Crown Top -->
-      <polygon points="0,-31.5 12,-18.75 -12,-18.75" fill="url(#z-crown-t)" />
-      <!-- Crown Upper Left/Right -->
-      <polygon points="0,-31.5 -12,-18.75 -24,-16.5" fill="url(#z-crown-l)" />
-      <polygon points="0,-31.5 24,-16.5 12,-18.75" fill="url(#z-crown-r)" />
-      <!-- Table (Center Flat Top) -->
-      <polygon points="-12,-18.75 12,-18.75 17.25,-8.25 -17.25,-8.25" fill="url(#z-table)" />
-      <!-- Crown Lower Left/Right -->
-      <polygon points="-24,-16.5 -12,-18.75 -17.25,-8.25 -31.5,-3.75" fill="url(#z-crown-l)" />
-      <polygon points="24,-16.5 31.5,-3.75 17.25,-8.25 12,-18.75" fill="url(#z-crown-r)" />
-      <!-- Inner/Outer Girdle Connections -->
-      <polygon points="-31.5,-3.75 -17.25,-8.25 -12.75,-1.5" fill="url(#z-girdle-l)" />
-      <polygon points="-17.25,-8.25 17.25,-8.25 12.75,-1.5 -12.75,-1.5" fill="url(#z-table)" />
-      <polygon points="17.25,-8.25 31.5,-3.75 12.75,-1.5" fill="url(#z-girdle-r)" />
-      <!-- Pavilion Lower Cuts -->
-      <polygon points="-31.5,-3.75 -12.75,-1.5 0,33" fill="url(#z-pav-l)" />
-      <polygon points="-12.75,-1.5 12.75,-1.5 0,33" fill="url(#z-pav-c)" />
-      <polygon points="12.75,-1.5 31.5,-3.75 0,33" fill="url(#z-pav-r)" />
+      <polygon points="0,-33 12,-19 -12,-19" fill="url(#z-crown-top)" />
+      <!-- Crown Upper Flanks -->
+      <polygon points="0,-33 -12,-19 -25,-17" fill="url(#z-crown-ul)" />
+      <polygon points="0,-33 25,-17 12,-19" fill="url(#z-crown-ur)" />
+      <!-- Center Table -->
+      <polygon points="-12,-19 12,-19 18,-8 -18,-8" fill="url(#z-table)" />
+      <!-- Crown Lower Flanks -->
+      <polygon points="-25,-17 -12,-19 -18,-8 -33,-3" fill="url(#z-crown-ul)" />
+      <polygon points="25,-17 33,-3 18,-8 12,-19" fill="url(#z-crown-ur)" />
+      <!-- Girdles -->
+      <polygon points="-33,-3 -18,-8 -13.5,-1" fill="url(#z-girdle-l)" />
+      <polygon points="-18,-8 18,-8 13.5,-1 -13.5,-1" fill="url(#z-table)" />
+      <polygon points="18,-8 33,-3 13.5,-1" fill="url(#z-girdle-r)" />
+      <!-- Pavilion Lower Cones -->
+      <polygon points="-33,-3 -13.5,-1 0,34" fill="url(#z-pav-l)" />
+      <polygon points="-13.5,-1 13.5,-1 0,34" fill="url(#z-pav-c)" />
+      <polygon points="13.5,-1 33,-3 0,34" fill="url(#z-pav-r)" />
     </g>
 
-    <!-- 3. Ultra-Fine Geometry Outlines for Razor Sharpness -->
-    <g stroke="#ffffff" stroke-width="0.35" stroke-opacity="0.35" stroke-linejoin="round" stroke-linecap="round">
-      <polygon points="0,-31.5 24,-16.5 31.5,-3.75 0,33 -31.5,-3.75 -24,-16.5" />
-      <polygon points="-12,-18.75 12,-18.75 17.25,-8.25 -17.25,-8.25" />
-      <line x1="0" y1="-31.5" x2="-12" y2="-18.75" />
-      <line x1="0" y1="-31.5" x2="12" y2="-18.75" />
-      <line x1="-24" y1="-16.5" x2="-12" y2="-18.75" />
-      <line x1="24" y1="-16.5" x2="12" y2="-18.75" />
-      <line x1="-31.5" y1="-3.75" x2="-17.25" y2="-8.25" />
-      <line x1="31.5" y1="-3.75" x2="17.25" y2="-8.25" />
-      <line x1="-31.5" y1="-3.75" x2="-12.75" y2="-1.5" />
-      <line x1="-17.25" y1="-8.25" x2="-12.75" y2="-1.5" />
-      <line x1="17.25" y1="-8.25" x2="12.75" y2="-1.5" />
-      <line x1="31.5" y1="-3.75" x2="12.75" y2="-1.5" />
-      <line x1="-12.75" y1="-1.5" x2="12.75" y2="-1.5" />
-      <line x1="-12.75" y1="-1.5" x2="0" y2="33" />
-      <line x1="12.75" y1="-1.5" x2="0" y2="33" />
+    <!-- LAYER 3: Razor-Sharp Animated Edge Glints -->
+    <g stroke="url(#edgeGlint)" stroke-width="0.85" stroke-linejoin="round" stroke-linecap="round">
+      <polygon points="0,-33 25,-17 33,-3 0,34 -33,-3 -25,-17" />
+      <polygon points="-12,-19 12,-19 18,-8 -18,-8" />
+      <line x1="0" y1="-33" x2="-12" y2="-19" />
+      <line x1="0" y1="-33" x2="12" y2="-19" />
+      <line x1="-25" y1="-17" x2="-12" y2="-19" />
+      <line x1="25" y1="-17" x2="12" y2="-19" />
+      <line x1="-33" y1="-3" x2="-18" y2="-8" />
+      <line x1="33" y1="-3" x2="18" y2="-8" />
+      <line x1="-33" y1="-3" x2="-13.5" y2="-1" />
+      <line x1="-18" y1="-8" x2="-13.5" y2="-1" />
+      <line x1="18" y1="-8" x2="13.5" y2="-1" />
+      <line x1="33" y1="-3" x2="13.5" y2="-1" />
+      <line x1="-13.5" y1="-1" x2="13.5" y2="-1" />
+      <line x1="-13.5" y1="-1" x2="0" y2="34" />
+      <line x1="13.5" y1="-1" x2="0" y2="34" />
     </g>
+
+    <!-- Layer 4: Extreme Specular Corner Flares (Flashes when light hits top/bottom) -->
+    <circle cx="0" cy="-33" r="1.5" fill="#ffffff">
+      <animate attributeName="opacity" values="1;0;1;0.5;1" dur="4.5s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="0" cy="34" r="1.5" fill="#38bdf8">
+      <animate attributeName="opacity" values="0.2;1;0.2;0.8;0.2" dur="6.1s" repeatCount="indefinite" />
+    </circle>
   </g>
 
-  <!-- Typography Frame & Bracket Details -->
+  <!-- ================================================================= -->
+  <!-- ARCHITECTURAL TYPOGRAPHY FRAME                                    -->
+  <!-- ================================================================= -->
   <g>
-    <!-- Top & Bottom Frame Lines -->
-    <line x1="220" y1="124" x2="980" y2="124" stroke="url(#frameGrad)" stroke-width="1" />
-    <line x1="220" y1="208" x2="980" y2="208" stroke="url(#frameGrad)" stroke-width="1" />
+    <!-- Frame Rails -->
+    <line x1="240" y1="130" x2="960" y2="130" stroke="url(#ruleFade)" stroke-width="1" opacity="0.6" />
+    <line x1="240" y1="214" x2="960" y2="214" stroke="url(#ruleFade)" stroke-width="1" opacity="0.6" />
 
-    <!-- Corner Brackets -->
-    <path d="M 220 134 L 220 124 L 230 124 M 980 134 L 980 124 L 970 124" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.5" fill="none" />
-    <path d="M 220 198 L 220 208 L 230 208 M 980 198 L 980 208 L 970 208" stroke="#c084fc" stroke-width="1.5" stroke-opacity="0.5" fill="none" />
+    <!-- Cyan/Purple Registration Brackets -->
+    <path d="M 240 140 L 240 130 L 250 130 M 960 140 L 960 130 L 950 130" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.6" fill="none" />
+    <path d="M 240 204 L 240 214 L 250 214 M 960 204 L 960 214 L 950 214" stroke="#c084fc" stroke-width="1.5" stroke-opacity="0.6" fill="none" />
 
     <!-- Name Label -->
-    <text x="606" y="180" text-anchor="middle" class="hero-name" font-family="&#39;JetBrains Mono&#39;, &#39;SFMono-Regular&#39;, ui-monospace, Menlo, Consolas, monospace" font-size="44" font-weight="600" letter-spacing="12">
+    <text x="606" y="184" text-anchor="middle" class="hero-name" font-family="&#39;JetBrains Mono&#39;, &#39;SFMono-Regular&#39;, ui-monospace, Menlo, Consolas, monospace" font-size="46" font-weight="700" letter-spacing="14">
       MIGUEL MACEDO
     </text>
   </g>
 
   <!-- Subtitle Area -->
-  <g transform="translate(600, 244)">
-    <line x1="-265" y1="-4" x2="-155" y2="-4" stroke="url(#wingLeft)" stroke-width="1" />
-    <line x1="155" y1="-4" x2="265" y2="-4" stroke="url(#wingRight)" stroke-width="1" />
-    <text x="3.5" y="0" text-anchor="middle" class="hero-role" font-family="&#39;JetBrains Mono&#39;, &#39;SFMono-Regular&#39;, ui-monospace, Menlo, Consolas, monospace" font-size="11.5" font-weight="500" letter-spacing="7">
+  <g transform="translate(600, 252)">
+    <line x1="-280" y1="-4" x2="-165" y2="-4" stroke="url(#ruleFade)" stroke-width="1" />
+    <line x1="165" y1="-4" x2="280" y2="-4" stroke="url(#ruleFade)" stroke-width="1" />
+    <text x="3.5" y="0" text-anchor="middle" class="hero-role" font-family="&#39;JetBrains Mono&#39;, &#39;SFMono-Regular&#39;, ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="500" letter-spacing="8">
       FULL STACK DEVELOPER
     </text>
   </g>
 
-  <!-- Base Connection Line -->
-  <path stroke="url(#hdrRuleGrad)" stroke-width="1" fill="none" d="M 80 290 L 574 290 L 584 298 L 616 298 L 626 290 L 1120 290" />
+  <!-- Base Connection Trace -->
+  <path stroke="url(#ruleFade)" stroke-width="1.25" fill="none" d="M 60 298 L 574 298 L 584 306 L 616 306 L 626 298 L 1140 298" />
 </svg>
