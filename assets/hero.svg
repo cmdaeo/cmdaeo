@@ -1,109 +1,195 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 340" width="1200" height="340" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" width="1200" height="120" fill="none">
   <defs>
-    <linearGradient id="topRule" x1="0%" y1="0%" x2="100%" y2="0%">
+    <!-- Tapered Flanking Hairline Gradient -->
+    <linearGradient id="ruleFade" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#38bdf8" stop-opacity="0" />
-      <stop offset="25%" stop-color="#38bdf8" stop-opacity="0.35" />
-      <stop offset="50%" stop-color="#818cf8" stop-opacity="0.85" />
-      <stop offset="75%" stop-color="#c084fc" stop-opacity="0.35" />
+      <stop offset="30%" stop-color="#38bdf8" stop-opacity="0.18" />
+      <stop offset="50%" stop-color="#818cf8" stop-opacity="0.5" />
+      <stop offset="70%" stop-color="#c084fc" stop-opacity="0.18" />
       <stop offset="100%" stop-color="#c084fc" stop-opacity="0" />
     </linearGradient>
 
-    <clipPath id="reelClip">
-      <rect x="0" y="-22" width="110" height="28" />
-    </clipPath>
+    <!-- Soft Ambient Backdrop -->
+    <radialGradient id="crystalAmbient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#818cf8" stop-opacity="0.14" />
+      <stop offset="65%" stop-color="#38bdf8" stop-opacity="0.03" />
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
+    </radialGradient>
 
-    <style type="text/css">
-      
-        .bg-canvas { fill: #0d1117; stroke: #1e293b; }
-        .card-box { fill: #111827; stroke: #1e293b; }
-        .txt-main { fill: #f8fafc; }
-        .txt-muted { fill: #64748b; }
-        .theme-label { fill: #818cf8; }
+    <!-- 3D Facet Elevation Heightmaps (Alpha Channel = Z-Depth for Normal Calculation) -->
+    <linearGradient id="z-crown-top" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.96" />
+    </linearGradient>
 
-        @media (prefers-color-scheme: light) {
-          .bg-canvas { fill: #ffffff; stroke: #e2e8f0; }
-          .card-box { fill: #f8fafc; stroke: #cbd5e1; }
-          .txt-main { fill: #0f172a; }
-          .txt-muted { fill: #64748b; }
-        }
+    <linearGradient id="z-crown-ul" x1="0%" y1="15%" x2="100%" y2="85%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.92" />
+    </linearGradient>
 
-        @keyframes cssDot {
-          0%, 100% { opacity: 1; transform: scale(1); }
-          50% { opacity: 0.25; transform: scale(0.8); }
-        }
-        .css-probe {
-          transform-box: fill-box;
-          transform-origin: center;
-          animation: cssDot 1.6s ease-in-out infinite;
-          fill: #38bdf8;
-        }
-      
-    </style>
+    <linearGradient id="z-crown-ur" x1="100%" y1="15%" x2="0%" y2="85%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.92" />
+    </linearGradient>
+
+    <linearGradient id="z-table" x1="15%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.88" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.98" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.86" />
+    </linearGradient>
+
+    <linearGradient id="z-bezel-l" x1="0%" y1="45%" x2="100%" y2="55%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.88" />
+    </linearGradient>
+
+    <linearGradient id="z-bezel-r" x1="100%" y1="45%" x2="0%" y2="55%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.88" />
+    </linearGradient>
+
+    <linearGradient id="z-girdle-l" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.82" />
+    </linearGradient>
+
+    <linearGradient id="z-girdle-c" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.72" />
+    </linearGradient>
+
+    <linearGradient id="z-girdle-r" x1="100%" y1="50%" x2="0%" y2="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.82" />
+    </linearGradient>
+
+    <linearGradient id="z-pav-l" x1="0%" y1="0%" x2="85%" y2="75%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.24" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.76" />
+    </linearGradient>
+
+    <linearGradient id="z-pav-c" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.78" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.16" />
+    </linearGradient>
+
+    <linearGradient id="z-pav-r" x1="100%" y1="0%" x2="15%" y2="75%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.24" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.76" />
+    </linearGradient>
+
+    <!-- 3D Normal-Map Diffuse + Specular Shader -->
+    <filter id="normal-crystal-shader" x="-40%" y="-40%" width="180%" height="180%">
+      <!-- Smooth Micro-Bevels on Facet Seams -->
+      <feGaussianBlur in="SourceAlpha" stdDeviation="0.55" result="heightmap" />
+
+      <!-- Diffuse Surface-Normal Shading -->
+      <feDiffuseLighting in="heightmap" surfaceScale="18" diffuseConstant="1.15" lighting-color="#818cf8" result="diffuse">
+        <fePointLight x="550" y="18" z="54">
+          <animate attributeName="x" values="525;675;525" dur="7s" begin="0s" repeatCount="indefinite" />
+          <animate attributeName="y" values="14;64;14" dur="5.5s" begin="0s" repeatCount="indefinite" />
+          <animate attributeName="x" to="490" dur="0.25s" begin="zone1.mouseover" fill="freeze" />
+          <animate attributeName="x" to="535" dur="0.25s" begin="zone2.mouseover" fill="freeze" />
+          <animate attributeName="x" to="575" dur="0.25s" begin="zone3.mouseover" fill="freeze" />
+          <animate attributeName="x" to="600" dur="0.25s" begin="zone4.mouseover" fill="freeze" />
+          <animate attributeName="x" to="625" dur="0.25s" begin="zone5.mouseover" fill="freeze" />
+          <animate attributeName="x" to="665" dur="0.25s" begin="zone6.mouseover" fill="freeze" />
+          <animate attributeName="x" to="710" dur="0.25s" begin="zone7.mouseover" fill="freeze" />
+          <animate attributeName="y" to="16" dur="0.25s" begin="zoneTop.mouseover" fill="freeze" />
+          <animate attributeName="y" to="68" dur="0.25s" begin="zoneBot.mouseover" fill="freeze" />
+        </fePointLight>
+      </feDiffuseLighting>
+
+      <!-- Specular Crystal Glint -->
+      <feSpecularLighting in="heightmap" surfaceScale="18" specularConstant="1.85" specularExponent="30" lighting-color="#e0f2fe" result="specular">
+        <fePointLight x="550" y="18" z="54">
+          <animate attributeName="x" values="525;675;525" dur="7s" begin="0s" repeatCount="indefinite" />
+          <animate attributeName="y" values="14;64;14" dur="5.5s" begin="0s" repeatCount="indefinite" />
+          <animate attributeName="x" to="490" dur="0.25s" begin="zone1.mouseover" fill="freeze" />
+          <animate attributeName="x" to="535" dur="0.25s" begin="zone2.mouseover" fill="freeze" />
+          <animate attributeName="x" to="575" dur="0.25s" begin="zone3.mouseover" fill="freeze" />
+          <animate attributeName="x" to="600" dur="0.25s" begin="zone4.mouseover" fill="freeze" />
+          <animate attributeName="x" to="625" dur="0.25s" begin="zone5.mouseover" fill="freeze" />
+          <animate attributeName="x" to="665" dur="0.25s" begin="zone6.mouseover" fill="freeze" />
+          <animate attributeName="x" to="710" dur="0.25s" begin="zone7.mouseover" fill="freeze" />
+          <animate attributeName="y" to="16" dur="0.25s" begin="zoneTop.mouseover" fill="freeze" />
+          <animate attributeName="y" to="68" dur="0.25s" begin="zoneBot.mouseover" fill="freeze" />
+        </fePointLight>
+      </feSpecularLighting>
+
+      <!-- Base Crystal Body Albedo -->
+      <feFlood flood-color="#1e1b4b" flood-opacity="0.88" result="crystal-base" />
+      <feBlend in="crystal-base" in2="diffuse" mode="screen" result="shaded-body" />
+      <feComposite in="specular" in2="shaded-body" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="lit-crystal" />
+
+      <!-- Hard Silhouette Clipping Mask from Heightmap -->
+      <feComponentTransfer in="SourceAlpha" result="silhouette-mask">
+        <feFuncA type="linear" slope="20" intercept="0" />
+      </feComponentTransfer>
+      <feComposite in="lit-crystal" in2="silhouette-mask" operator="in" />
+    </filter>
   </defs>
 
-  <rect width="1200" height="340" rx="10" class="bg-canvas" stroke-width="1" />
+  <!-- Ambient Glow -->
+  <ellipse cx="600" cy="44" rx="54" ry="42" fill="url(#crystalAmbient)" />
 
-  <g transform="translate(600, 42)" font-family="ui-monospace, SFMono-Regular, &#39;JetBrains Mono&#39;, Consolas, monospace">
-    <text x="0" y="0" text-anchor="middle" font-size="13" font-weight="700" class="txt-main" letter-spacing="4">
-      GITHUB SANITIZER-SAFE CAPABILITY PROBE
-    </text>
-    <text x="0" y="18" text-anchor="middle" font-size="9.5" class="txt-muted" letter-spacing="2">
-      ZERO SCRIPT TAGS · FIXED VIEWPORT · TESTING CSS, MEDIA QUERIES & SMIL REELS
-    </text>
-  </g>
-  <line x1="40" y1="72" x2="1160" y2="72" stroke="url(#topRule)" stroke-width="1" />
+  <!-- Clean Tapered Hairlines (No Dots) -->
+  <line x1="140" y1="44" x2="546" y2="44" stroke="url(#ruleFade)" stroke-width="1" />
+  <line x1="654" y1="44" x2="1060" y2="44" stroke="url(#ruleFade)" stroke-width="1" />
 
-  <!-- TEST 01: CSS @keyframes -->
-  <g transform="translate(40, 92)">
-    <rect width="545" height="96" rx="6" class="card-box" stroke-width="1" />
-    <text x="16" y="24" font-family="monospace" font-size="10.5" font-weight="600" fill="#38bdf8">TEST-01 // <style> CSS @keyframes Animation</text>
-    <circle cx="26" cy="55" r="7" class="css-probe" />
-    <text x="44" y="60" font-family="monospace" font-size="15" font-weight="600" class="txt-main">PULSING DOT = CSS SURVIVED</text>
-    <text x="16" y="82" font-family="monospace" font-size="9" class="txt-muted">Verifies whether inline <style> keyframes run inside GitHub's proxy</text>
-  </g>
-
-  <!-- TEST 02: Dynamic OS Light/Dark Mode -->
-  <g transform="translate(615, 92)">
-    <rect width="545" height="96" rx="6" class="card-box" stroke-width="1" />
-    <text x="16" y="24" font-family="monospace" font-size="10.5" font-weight="600" fill="#818cf8">TEST-02 // @media (prefers-color-scheme) Detection</text>
-    <text x="16" y="60" font-family="monospace" font-size="15" font-weight="600" class="theme-label">AUTO-ADAPTS TO VIEWER SYSTEM THEME</text>
-    <text x="16" y="82" font-family="monospace" font-size="9" class="txt-muted">Card background & text invert dynamically when GitHub switches Light/Dark</text>
-  </g>
-
-  <!-- TEST 03: Pure SMIL Discrete Ticking Clock -->
-  <g transform="translate(40, 206)">
-    <rect width="545" height="96" rx="6" class="card-box" stroke-width="1" />
-    <text x="16" y="24" font-family="monospace" font-size="10.5" font-weight="600" fill="#10b981">TEST-03 // SMIL calcMode="discrete" Live Reels (MM:SS)</text>
-
-    <g transform="translate(16, 64)" clip-path="url(#reelClip)" font-family="monospace" font-size="26" font-weight="700">
-      <g class="txt-main">
-        <animateTransform attributeName="transform" type="translate" calcMode="discrete" dur="600s" repeatCount="indefinite" values="0 0; 0 -30; 0 -60; 0 -90; 0 -120; 0 -150; 0 -180; 0 -210; 0 -240; 0 -270" />
-        <text x="0" y="0">0</text><text x="0" y="30">1</text><text x="0" y="60">2</text><text x="0" y="90">3</text><text x="0" y="120">4</text>
-        <text x="0" y="150">5</text><text x="0" y="180">6</text><text x="0" y="210">7</text><text x="0" y="240">8</text><text x="0" y="270">9</text>
-      </g>
-      <text x="18" y="-1" fill="#818cf8">:</text>
-      <g fill="#818cf8">
-        <animateTransform attributeName="transform" type="translate" calcMode="discrete" dur="60s" repeatCount="indefinite" values="0 0; 0 -30; 0 -60; 0 -90; 0 -120; 0 -150" />
-        <text x="34" y="0">0</text><text x="34" y="30">1</text><text x="34" y="60">2</text><text x="34" y="90">3</text><text x="34" y="120">4</text><text x="34" y="150">5</text>
-      </g>
-      <g fill="#38bdf8">
-        <animateTransform attributeName="transform" type="translate" calcMode="discrete" dur="10s" repeatCount="indefinite" values="0 0; 0 -30; 0 -60; 0 -90; 0 -120; 0 -150; 0 -180; 0 -210; 0 -240; 0 -270" />
-        <text x="52" y="0">0</text><text x="52" y="30">1</text><text x="52" y="60">2</text><text x="52" y="90">3</text><text x="52" y="120">4</text>
-        <text x="52" y="150">5</text><text x="52" y="180">6</text><text x="52" y="210">7</text><text x="52" y="240">8</text><text x="52" y="270">9</text>
-      </g>
+  <!-- 3D Normal-Mapped Diamond Assembly -->
+  <g transform="translate(600, 44)">
+    <!-- 12-Facet Elevation Mesh -->
+    <g filter="url(#normal-crystal-shader)">
+      <polygon points="0,-30 11,-18 -11,-18" fill="url(#z-crown-top)" />
+      <polygon points="0,-30 -11,-18 -22,-16" fill="url(#z-crown-ul)" />
+      <polygon points="0,-30 22,-16 11,-18" fill="url(#z-crown-ur)" />
+      <polygon points="-11,-18 11,-18 16,-8 -16,-8" fill="url(#z-table)" />
+      <polygon points="-22,-16 -11,-18 -16,-8 -30,-4" fill="url(#z-bezel-l)" />
+      <polygon points="22,-16 30,-4 16,-8 11,-18" fill="url(#z-bezel-r)" />
+      <polygon points="-30,-4 -16,-8 -12,-2" fill="url(#z-girdle-l)" />
+      <polygon points="-16,-8 16,-8 12,-2 -12,-2" fill="url(#z-girdle-c)" />
+      <polygon points="16,-8 30,-4 12,-2" fill="url(#z-girdle-r)" />
+      <polygon points="-30,-4 -12,-2 0,32" fill="url(#z-pav-l)" />
+      <polygon points="-12,-2 12,-2 0,32" fill="url(#z-pav-c)" />
+      <polygon points="12,-2 30,-4 0,32" fill="url(#z-pav-r)" />
     </g>
-    <text x="16" y="82" font-family="monospace" font-size="9" class="txt-muted">Ticks upward every second purely via SVG SMIL without JavaScript</text>
+
+    <!-- Crisp Architectural Facet Creases -->
+    <g stroke="#e0f2fe" stroke-width="0.55" stroke-opacity="0.24" stroke-linejoin="round">
+      <polygon points="0,-30 22,-16 30,-4 0,32 -30,-4 -22,-16" />
+      <polygon points="-11,-18 11,-18 16,-8 -16,-8" />
+      <line x1="0" y1="-30" x2="-11" y2="-18" />
+      <line x1="0" y1="-30" x2="11" y2="-18" />
+      <line x1="-22" y1="-16" x2="-11" y2="-18" />
+      <line x1="22" y1="-16" x2="11" y2="-18" />
+      <line x1="-30" y1="-4" x2="-16" y2="-8" />
+      <line x1="30" y1="-4" x2="16" y2="-8" />
+      <line x1="-30" y1="-4" x2="-12" y2="-2" />
+      <line x1="-16" y1="-8" x2="-12" y2="-2" />
+      <line x1="16" y1="-8" x2="12" y2="-2" />
+      <line x1="30" y1="-4" x2="12" y2="-2" />
+      <line x1="-12" y1="-2" x2="12" y2="-2" />
+      <line x1="-12" y1="-2" x2="0" y2="32" />
+      <line x1="12" y1="-2" x2="0" y2="32" />
+    </g>
   </g>
 
-  <!-- TEST 04: SMIL Smooth Path Morph -->
-  <g transform="translate(615, 206)">
-    <rect width="545" height="96" rx="6" class="card-box" stroke-width="1" />
-    <text x="16" y="24" font-family="monospace" font-size="10.5" font-weight="600" fill="#c084fc">TEST-04 // SMIL Bezier Wave Interpolation</text>
-    <path d="M 16 55 Q 150 38, 280 55 T 525 55" stroke="#c084fc" stroke-width="1.5" fill="none">
-      <animate attributeName="d" dur="4s" repeatCount="indefinite" values="M 16 55 Q 150 38, 280 55 T 525 55;
-                M 16 55 Q 150 72, 280 55 T 525 55;
-                M 16 55 Q 150 38, 280 55 T 525 55" />
-    </path>
-    <text x="16" y="82" font-family="monospace" font-size="9" class="txt-muted">Smooth organic path interpolation without line-dash pulses</text>
+  <!-- Signature -->
+  <text x="600" y="102" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, &#39;JetBrains Mono&#39;, Menlo, Consolas, monospace" font-size="8.5" font-weight="500" letter-spacing="8" fill="#64748b">
+    MMXXVI · CMDAEO
+  </text>
+
+  <!-- Transparent Pointer-Tracking Sensor Zones (Active on Direct View / Click-Through) -->
+  <g fill="#000000" fill-opacity="0">
+    <rect id="zoneTop" x="0" y="0" width="1200" height="44" />
+    <rect id="zoneBot" x="0" y="44" width="1200" height="76" />
+    <rect id="zone1" x="0" y="0" width="320" height="120" />
+    <rect id="zone2" x="320" y="0" width="160" height="120" />
+    <rect id="zone3" x="480" y="0" width="90" height="120" />
+    <rect id="zone4" x="570" y="0" width="60" height="120" />
+    <rect id="zone5" x="630" y="0" width="90" height="120" />
+    <rect id="zone6" x="720" y="0" width="160" height="120" />
+    <rect id="zone7" x="880" y="0" width="320" height="120" />
   </g>
 </svg>
