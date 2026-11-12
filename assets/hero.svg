@@ -1,195 +1,217 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" width="1200" height="120" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="1200" height="320" fill="none">
   <defs>
-    <!-- Tapered Flanking Hairline Gradient -->
-    <linearGradient id="ruleFade" x1="0%" y1="0%" x2="100%" y2="0%">
+    <style type="text/css">
+      
+        .hero-name { fill: #f8fafc; }
+        .hero-role { fill: #94a3b8; }
+        @media (prefers-color-scheme: light) {
+          .hero-name { fill: #0f172a; }
+          .hero-role { fill: #475569; }
+        }
+      
+    </style>
+
+    <linearGradient id="hdrRuleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#38bdf8" stop-opacity="0" />
-      <stop offset="30%" stop-color="#38bdf8" stop-opacity="0.18" />
-      <stop offset="50%" stop-color="#818cf8" stop-opacity="0.5" />
-      <stop offset="70%" stop-color="#c084fc" stop-opacity="0.18" />
+      <stop offset="22%" stop-color="#38bdf8" stop-opacity="0.22" />
+      <stop offset="50%" stop-color="#818cf8" stop-opacity="0.6" />
+      <stop offset="78%" stop-color="#c084fc" stop-opacity="0.22" />
       <stop offset="100%" stop-color="#c084fc" stop-opacity="0" />
     </linearGradient>
 
-    <!-- Soft Ambient Backdrop -->
-    <radialGradient id="crystalAmbient" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#818cf8" stop-opacity="0.14" />
-      <stop offset="65%" stop-color="#38bdf8" stop-opacity="0.03" />
-      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
-    </radialGradient>
+    <linearGradient id="frameGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.08" />
+      <stop offset="25%" stop-color="#38bdf8" stop-opacity="0.35" />
+      <stop offset="50%" stop-color="#818cf8" stop-opacity="0.55" />
+      <stop offset="75%" stop-color="#c084fc" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#c084fc" stop-opacity="0.08" />
+    </linearGradient>
 
-    <!-- 3D Facet Elevation Heightmaps (Alpha Channel = Z-Depth for Normal Calculation) -->
-    <linearGradient id="z-crown-top" x1="50%" y1="0%" x2="50%" y2="100%">
+    <linearGradient id="roleWingLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0" />
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.45" />
+    </linearGradient>
+    <linearGradient id="roleWingRight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c084fc" stop-opacity="0.45" />
+      <stop offset="100%" stop-color="#c084fc" stop-opacity="0" />
+    </linearGradient>
+
+    <pattern id="archGrid" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M 80 0 L 0 0 0 80" fill="none" stroke="#818cf8" stroke-width="0.6" stroke-opacity="0.06" />
+    </pattern>
+    <radialGradient id="gridVignette" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.85" />
+      <stop offset="65%" stop-color="#ffffff" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+    <mask id="hdrGridMask">
+      <rect width="1200" height="320" fill="url(#gridVignette)" />
+    </mask>
+
+    <pattern id="hdr-halftone" width="3.5" height="3.5" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="0.72" fill="#09090b" fill-opacity="0.65" />
+      <circle cx="2.75" cy="2.75" r="0.72" fill="#09090b" fill-opacity="0.65" />
+    </pattern>
+
+    <linearGradient id="hdr-halftone-fade" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="45%" stop-color="#ffffff" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.95" />
+    </linearGradient>
+    <mask id="hdr-halftone-mask">
+      <rect x="-25" y="-25" width="50" height="50" fill="url(#hdr-halftone-fade)" />
+    </mask>
+
+    <clipPath id="hdr-diamond-clip">
+      <polygon points="0,-21 16,-11 21,-2.5 0,22 -21,-2.5 -16,-11" />
+    </clipPath>
+
+    <linearGradient id="hz-top" x1="50%" y1="0%" x2="50%" y2="100%">
       <stop offset="0%" stop-color="#ffffff" stop-opacity="0.22" />
       <stop offset="100%" stop-color="#ffffff" stop-opacity="0.96" />
     </linearGradient>
-
-    <linearGradient id="z-crown-ul" x1="0%" y1="15%" x2="100%" y2="85%">
+    <linearGradient id="hz-ul" x1="0%" y1="15%" x2="100%" y2="85%">
       <stop offset="0%" stop-color="#ffffff" stop-opacity="0.18" />
       <stop offset="100%" stop-color="#ffffff" stop-opacity="0.92" />
     </linearGradient>
-
-    <linearGradient id="z-crown-ur" x1="100%" y1="15%" x2="0%" y2="85%">
+    <linearGradient id="hz-ur" x1="100%" y1="15%" x2="0%" y2="85%">
       <stop offset="0%" stop-color="#ffffff" stop-opacity="0.18" />
       <stop offset="100%" stop-color="#ffffff" stop-opacity="0.92" />
     </linearGradient>
-
-    <linearGradient id="z-table" x1="15%" y1="0%" x2="85%" y2="100%">
+    <linearGradient id="hz-table" x1="15%" y1="0%" x2="85%" y2="100%">
       <stop offset="0%" stop-color="#ffffff" stop-opacity="0.88" />
       <stop offset="50%" stop-color="#ffffff" stop-opacity="0.98" />
       <stop offset="100%" stop-color="#ffffff" stop-opacity="0.86" />
     </linearGradient>
-
-    <linearGradient id="z-bezel-l" x1="0%" y1="45%" x2="100%" y2="55%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.16" />
-      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.88" />
+    <linearGradient id="hz-side-l" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.86" />
     </linearGradient>
-
-    <linearGradient id="z-bezel-r" x1="100%" y1="45%" x2="0%" y2="55%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.16" />
-      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.88" />
+    <linearGradient id="hz-side-r" x1="100%" y1="50%" x2="0%" y2="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.86" />
     </linearGradient>
-
-    <linearGradient id="z-girdle-l" x1="0%" y1="50%" x2="100%" y2="50%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.2" />
-      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.82" />
-    </linearGradient>
-
-    <linearGradient id="z-girdle-c" x1="50%" y1="0%" x2="50%" y2="100%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
-      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.72" />
-    </linearGradient>
-
-    <linearGradient id="z-girdle-r" x1="100%" y1="50%" x2="0%" y2="50%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.2" />
-      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.82" />
-    </linearGradient>
-
-    <linearGradient id="z-pav-l" x1="0%" y1="0%" x2="85%" y2="75%">
+    <linearGradient id="hz-pav-l" x1="0%" y1="0%" x2="85%" y2="75%">
       <stop offset="0%" stop-color="#ffffff" stop-opacity="0.24" />
       <stop offset="100%" stop-color="#ffffff" stop-opacity="0.76" />
     </linearGradient>
-
-    <linearGradient id="z-pav-c" x1="50%" y1="0%" x2="50%" y2="100%">
+    <linearGradient id="hz-pav-c" x1="50%" y1="0%" x2="50%" y2="100%">
       <stop offset="0%" stop-color="#ffffff" stop-opacity="0.78" />
       <stop offset="100%" stop-color="#ffffff" stop-opacity="0.16" />
     </linearGradient>
-
-    <linearGradient id="z-pav-r" x1="100%" y1="0%" x2="15%" y2="75%">
+    <linearGradient id="hz-pav-r" x1="100%" y1="0%" x2="15%" y2="75%">
       <stop offset="0%" stop-color="#ffffff" stop-opacity="0.24" />
       <stop offset="100%" stop-color="#ffffff" stop-opacity="0.76" />
     </linearGradient>
 
-    <!-- 3D Normal-Map Diffuse + Specular Shader -->
-    <filter id="normal-crystal-shader" x="-40%" y="-40%" width="180%" height="180%">
-      <!-- Smooth Micro-Bevels on Facet Seams -->
-      <feGaussianBlur in="SourceAlpha" stdDeviation="0.55" result="heightmap" />
+    <filter id="hdr-comic-shader" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="0.45" result="heightmap" />
 
-      <!-- Diffuse Surface-Normal Shading -->
-      <feDiffuseLighting in="heightmap" surfaceScale="18" diffuseConstant="1.15" lighting-color="#818cf8" result="diffuse">
-        <fePointLight x="550" y="18" z="54">
-          <animate attributeName="x" values="525;675;525" dur="7s" begin="0s" repeatCount="indefinite" />
-          <animate attributeName="y" values="14;64;14" dur="5.5s" begin="0s" repeatCount="indefinite" />
-          <animate attributeName="x" to="490" dur="0.25s" begin="zone1.mouseover" fill="freeze" />
-          <animate attributeName="x" to="535" dur="0.25s" begin="zone2.mouseover" fill="freeze" />
-          <animate attributeName="x" to="575" dur="0.25s" begin="zone3.mouseover" fill="freeze" />
-          <animate attributeName="x" to="600" dur="0.25s" begin="zone4.mouseover" fill="freeze" />
-          <animate attributeName="x" to="625" dur="0.25s" begin="zone5.mouseover" fill="freeze" />
-          <animate attributeName="x" to="665" dur="0.25s" begin="zone6.mouseover" fill="freeze" />
-          <animate attributeName="x" to="710" dur="0.25s" begin="zone7.mouseover" fill="freeze" />
-          <animate attributeName="y" to="16" dur="0.25s" begin="zoneTop.mouseover" fill="freeze" />
-          <animate attributeName="y" to="68" dur="0.25s" begin="zoneBot.mouseover" fill="freeze" />
+      <feDiffuseLighting in="heightmap" surfaceScale="16" diffuseConstant="1.25" lighting-color="#ffffff" result="raw-diffuse">
+        <fePointLight x="46" y="0" z="38">
+          <animate attributeName="x" dur="10s" repeatCount="indefinite" values="46; 39.8; 23; 0; -23; -39.8; -46; -39.8; -23; 0; 23; 39.8; 46" />
+          <animate attributeName="y" dur="10s" repeatCount="indefinite" values="0; 17.5; 30.3; 35; 30.3; 17.5; 0; -17.5; -30.3; -35; -30.3; -17.5; 0" />
         </fePointLight>
       </feDiffuseLighting>
 
-      <!-- Specular Crystal Glint -->
-      <feSpecularLighting in="heightmap" surfaceScale="18" specularConstant="1.85" specularExponent="30" lighting-color="#e0f2fe" result="specular">
-        <fePointLight x="550" y="18" z="54">
-          <animate attributeName="x" values="525;675;525" dur="7s" begin="0s" repeatCount="indefinite" />
-          <animate attributeName="y" values="14;64;14" dur="5.5s" begin="0s" repeatCount="indefinite" />
-          <animate attributeName="x" to="490" dur="0.25s" begin="zone1.mouseover" fill="freeze" />
-          <animate attributeName="x" to="535" dur="0.25s" begin="zone2.mouseover" fill="freeze" />
-          <animate attributeName="x" to="575" dur="0.25s" begin="zone3.mouseover" fill="freeze" />
-          <animate attributeName="x" to="600" dur="0.25s" begin="zone4.mouseover" fill="freeze" />
-          <animate attributeName="x" to="625" dur="0.25s" begin="zone5.mouseover" fill="freeze" />
-          <animate attributeName="x" to="665" dur="0.25s" begin="zone6.mouseover" fill="freeze" />
-          <animate attributeName="x" to="710" dur="0.25s" begin="zone7.mouseover" fill="freeze" />
-          <animate attributeName="y" to="16" dur="0.25s" begin="zoneTop.mouseover" fill="freeze" />
-          <animate attributeName="y" to="68" dur="0.25s" begin="zoneBot.mouseover" fill="freeze" />
+      <feComponentTransfer in="raw-diffuse" result="cel-bands">
+        <feFuncR type="discrete" tableValues="0.14 0.30 0.52 0.82" />
+        <feFuncG type="discrete" tableValues="0.16 0.42 0.74 0.94" />
+        <feFuncB type="discrete" tableValues="0.38 0.76 0.98 1.0" />
+      </feComponentTransfer>
+
+      <feSpecularLighting in="heightmap" surfaceScale="16" specularConstant="1.85" specularExponent="24" lighting-color="#ffffff" result="raw-spec">
+        <fePointLight x="46" y="0" z="38">
+          <animate attributeName="x" dur="10s" repeatCount="indefinite" values="46; 39.8; 23; 0; -23; -39.8; -46; -39.8; -23; 0; 23; 39.8; 46" />
+          <animate attributeName="y" dur="10s" repeatCount="indefinite" values="0; 17.5; 30.3; 35; 30.3; 17.5; 0; -17.5; -30.3; -35; -30.3; -17.5; 0" />
         </fePointLight>
       </feSpecularLighting>
 
-      <!-- Base Crystal Body Albedo -->
-      <feFlood flood-color="#1e1b4b" flood-opacity="0.88" result="crystal-base" />
-      <feBlend in="crystal-base" in2="diffuse" mode="screen" result="shaded-body" />
-      <feComposite in="specular" in2="shaded-body" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="lit-crystal" />
-
-      <!-- Hard Silhouette Clipping Mask from Heightmap -->
-      <feComponentTransfer in="SourceAlpha" result="silhouette-mask">
-        <feFuncA type="linear" slope="20" intercept="0" />
+      <feComponentTransfer in="raw-spec" result="cel-spec">
+        <feFuncR type="discrete" tableValues="0 0 0 1" />
+        <feFuncG type="discrete" tableValues="0 0 0 1" />
+        <feFuncB type="discrete" tableValues="0 0 0 1" />
+        <feFuncA type="discrete" tableValues="0 0 0 0.95" />
       </feComponentTransfer>
-      <feComposite in="lit-crystal" in2="silhouette-mask" operator="in" />
+
+      <feComposite in="cel-spec" in2="cel-bands" operator="over" result="toon-lit" />
+
+      <feComponentTransfer in="SourceAlpha" result="mask">
+        <feFuncA type="linear" slope="25" intercept="0" />
+      </feComponentTransfer>
+      <feComposite in="toon-lit" in2="mask" operator="in" />
     </filter>
   </defs>
 
-  <!-- Ambient Glow -->
-  <ellipse cx="600" cy="44" rx="54" ry="42" fill="url(#crystalAmbient)" />
-
-  <!-- Clean Tapered Hairlines (No Dots) -->
-  <line x1="140" y1="44" x2="546" y2="44" stroke="url(#ruleFade)" stroke-width="1" />
-  <line x1="654" y1="44" x2="1060" y2="44" stroke="url(#ruleFade)" stroke-width="1" />
-
-  <!-- 3D Normal-Mapped Diamond Assembly -->
-  <g transform="translate(600, 44)">
-    <!-- 12-Facet Elevation Mesh -->
-    <g filter="url(#normal-crystal-shader)">
-      <polygon points="0,-30 11,-18 -11,-18" fill="url(#z-crown-top)" />
-      <polygon points="0,-30 -11,-18 -22,-16" fill="url(#z-crown-ul)" />
-      <polygon points="0,-30 22,-16 11,-18" fill="url(#z-crown-ur)" />
-      <polygon points="-11,-18 11,-18 16,-8 -16,-8" fill="url(#z-table)" />
-      <polygon points="-22,-16 -11,-18 -16,-8 -30,-4" fill="url(#z-bezel-l)" />
-      <polygon points="22,-16 30,-4 16,-8 11,-18" fill="url(#z-bezel-r)" />
-      <polygon points="-30,-4 -16,-8 -12,-2" fill="url(#z-girdle-l)" />
-      <polygon points="-16,-8 16,-8 12,-2 -12,-2" fill="url(#z-girdle-c)" />
-      <polygon points="16,-8 30,-4 12,-2" fill="url(#z-girdle-r)" />
-      <polygon points="-30,-4 -12,-2 0,32" fill="url(#z-pav-l)" />
-      <polygon points="-12,-2 12,-2 0,32" fill="url(#z-pav-c)" />
-      <polygon points="12,-2 30,-4 0,32" fill="url(#z-pav-r)" />
-    </g>
-
-    <!-- Crisp Architectural Facet Creases -->
-    <g stroke="#e0f2fe" stroke-width="0.55" stroke-opacity="0.24" stroke-linejoin="round">
-      <polygon points="0,-30 22,-16 30,-4 0,32 -30,-4 -22,-16" />
-      <polygon points="-11,-18 11,-18 16,-8 -16,-8" />
-      <line x1="0" y1="-30" x2="-11" y2="-18" />
-      <line x1="0" y1="-30" x2="11" y2="-18" />
-      <line x1="-22" y1="-16" x2="-11" y2="-18" />
-      <line x1="22" y1="-16" x2="11" y2="-18" />
-      <line x1="-30" y1="-4" x2="-16" y2="-8" />
-      <line x1="30" y1="-4" x2="16" y2="-8" />
-      <line x1="-30" y1="-4" x2="-12" y2="-2" />
-      <line x1="-16" y1="-8" x2="-12" y2="-2" />
-      <line x1="16" y1="-8" x2="12" y2="-2" />
-      <line x1="30" y1="-4" x2="12" y2="-2" />
-      <line x1="-12" y1="-2" x2="12" y2="-2" />
-      <line x1="-12" y1="-2" x2="0" y2="32" />
-      <line x1="12" y1="-2" x2="0" y2="32" />
-    </g>
+  <g mask="url(#hdrGridMask)">
+    <rect x="80" y="10" width="1040" height="300" fill="url(#archGrid)" />
   </g>
 
-  <!-- Signature -->
-  <text x="600" y="102" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, &#39;JetBrains Mono&#39;, Menlo, Consolas, monospace" font-size="8.5" font-weight="500" letter-spacing="8" fill="#64748b">
-    MMXXVI · CMDAEO
-  </text>
+  <line x1="200" y1="68" x2="564" y2="68" stroke="url(#hdrRuleGrad)" stroke-width="1" />
+  <line x1="636" y1="68" x2="1000" y2="68" stroke="url(#hdrRuleGrad)" stroke-width="1" />
 
-  <!-- Transparent Pointer-Tracking Sensor Zones (Active on Direct View / Click-Through) -->
-  <g fill="#000000" fill-opacity="0">
-    <rect id="zoneTop" x="0" y="0" width="1200" height="44" />
-    <rect id="zoneBot" x="0" y="44" width="1200" height="76" />
-    <rect id="zone1" x="0" y="0" width="320" height="120" />
-    <rect id="zone2" x="320" y="0" width="160" height="120" />
-    <rect id="zone3" x="480" y="0" width="90" height="120" />
-    <rect id="zone4" x="570" y="0" width="60" height="120" />
-    <rect id="zone5" x="630" y="0" width="90" height="120" />
-    <rect id="zone6" x="720" y="0" width="160" height="120" />
-    <rect id="zone7" x="880" y="0" width="320" height="120" />
+  <g transform="translate(600, 68)">
+    <polygon points="2,-19 18,-9 23,-0.5 2,24 -19,-0.5 -14,-9" fill="#09090b" fill-opacity="0.55" />
+
+    <g filter="url(#hdr-comic-shader)">
+      <polygon points="0,-21 8,-12.5 -8,-12.5" fill="url(#hz-top)" />
+      <polygon points="0,-21 -8,-12.5 -16,-11" fill="url(#hz-ul)" />
+      <polygon points="0,-21 16,-11 8,-12.5" fill="url(#hz-ur)" />
+      <polygon points="-8,-12.5 8,-12.5 11.5,-5.5 -11.5,-5.5" fill="url(#hz-table)" />
+      <polygon points="-16,-11 -8,-12.5 -11.5,-5.5 -21,-2.5" fill="url(#hz-side-l)" />
+      <polygon points="16,-11 21,-2.5 11.5,-5.5 8,-12.5" fill="url(#hz-side-r)" />
+      <polygon points="-21,-2.5 -11.5,-5.5 -8.5,-1" fill="url(#hz-side-l)" />
+      <polygon points="-11.5,-5.5 11.5,-5.5 8.5,-1 -8.5,-1" fill="url(#hz-table)" />
+      <polygon points="11.5,-5.5 21,-2.5 8.5,-1" fill="url(#hz-side-r)" />
+      <polygon points="-21,-2.5 -8.5,-1 0,22" fill="url(#hz-pav-l)" />
+      <polygon points="-8.5,-1 8.5,-1 0,22" fill="url(#hz-pav-c)" />
+      <polygon points="8.5,-1 21,-2.5 0,22" fill="url(#hz-pav-r)" />
+    </g>
+
+    <g clip-path="url(#hdr-diamond-clip)">
+      <rect x="-25" y="-25" width="50" height="50" fill="url(#hdr-halftone)" mask="url(#hdr-halftone-mask)" />
+    </g>
+
+    <g stroke="#09090b" stroke-width="1" stroke-linejoin="round" stroke-linecap="round">
+      <polygon points="-8,-12.5 8,-12.5 11.5,-5.5 -11.5,-5.5" />
+      <line x1="0" y1="-21" x2="-8" y2="-12.5" />
+      <line x1="0" y1="-21" x2="8" y2="-12.5" />
+      <line x1="-16" y1="-11" x2="-8" y2="-12.5" />
+      <line x1="16" y1="-11" x2="8" y2="-12.5" />
+      <line x1="-21" y1="-2.5" x2="-11.5" y2="-5.5" />
+      <line x1="21" y1="-2.5" x2="11.5" y2="-5.5" />
+      <line x1="-21" y1="-2.5" x2="-8.5" y2="-1" />
+      <line x1="-11.5" y1="-5.5" x2="-8.5" y2="-1" />
+      <line x1="11.5" y1="-5.5" x2="8.5" y2="-1" />
+      <line x1="21" y1="-2.5" x2="8.5" y2="-1" />
+      <line x1="-8.5" y1="-1" x2="8.5" y2="-1" />
+      <line x1="-8.5" y1="-1" x2="0" y2="22" />
+      <line x1="8.5" y1="-1" x2="0" y2="22" />
+    </g>
+
+    <polygon points="0,-21 16,-11 21,-2.5 0,22 -21,-2.5 -16,-11" stroke="#09090b" stroke-width="1.75" stroke-linejoin="round" />
+    <polyline points="-19.5,-3 -15,-10 0,-19.5 15,-10" stroke="#e0f2fe" stroke-width="0.65" stroke-opacity="0.7" stroke-linecap="round" />
   </g>
+
+  <g>
+    <line x1="220" y1="118" x2="980" y2="118" stroke="url(#frameGrad)" stroke-width="1" />
+    <line x1="220" y1="202" x2="980" y2="202" stroke="url(#frameGrad)" stroke-width="1" />
+
+    <path d="M 220 128 L 220 118 L 230 118 M 980 128 L 980 118 L 970 118" stroke="#38bdf8" stroke-width="1.25" stroke-opacity="0.55" fill="none" />
+    <path d="M 220 192 L 220 202 L 230 202 M 980 192 L 980 202 L 970 202" stroke="#c084fc" stroke-width="1.25" stroke-opacity="0.55" fill="none" />
+
+    <text x="606" y="175" text-anchor="middle" class="hero-name" font-family="&#39;JetBrains Mono&#39;, &#39;SFMono-Regular&#39;, ui-monospace, Menlo, Consolas, monospace" font-size="44" font-weight="600" letter-spacing="12">
+      MIGUEL MACEDO
+    </text>
+  </g>
+
+  <g transform="translate(600, 238)">
+    <line x1="-265" y1="-4" x2="-155" y2="-4" stroke="url(#roleWingLeft)" stroke-width="1" />
+    <line x1="155" y1="-4" x2="265" y2="-4" stroke="url(#roleWingRight)" stroke-width="1" />
+    <text x="3.5" y="0" text-anchor="middle" class="hero-role" font-family="&#39;JetBrains Mono&#39;, &#39;SFMono-Regular&#39;, ui-monospace, Menlo, Consolas, monospace" font-size="11.5" font-weight="500" letter-spacing="7">
+      FULL STACK DEVELOPER
+    </text>
+  </g>
+
+  <path stroke="url(#hdrRuleGrad)" stroke-width="1" fill="none" d="M 80 284 L 574 284 L 584 292 L 616 292 L 626 284 L 1120 284" />
 </svg>
