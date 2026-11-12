@@ -1,23 +1,166 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 150" width="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" width="1200" height="120" fill="none">
   <defs>
-    <linearGradient id="mobiusGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%"><animate attributeName="stop-color" values="#ff0066;#00e5ff;#a020f0;#ff0066" dur="8s" repeatCount="indefinite"/></stop>
-      <stop offset="100%"><animate attributeName="stop-color" values="#00e5ff;#a020f0;#ff0066;#00e5ff" dur="8s" repeatCount="indefinite"/></stop>
+    <!-- Tapered Flanking Hairline Gradient -->
+    <linearGradient id="ruleFade" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0" />
+      <stop offset="30%" stop-color="#38bdf8" stop-opacity="0.18" />
+      <stop offset="50%" stop-color="#818cf8" stop-opacity="0.5" />
+      <stop offset="70%" stop-color="#c084fc" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#c084fc" stop-opacity="0" />
     </linearGradient>
-    <filter id="mobGlow">
-      <feGaussianBlur stdDeviation="3" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+
+    <!-- Soft Ambient Backdrop -->
+    <radialGradient id="crystalAmbient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#818cf8" stop-opacity="0.14" />
+      <stop offset="65%" stop-color="#38bdf8" stop-opacity="0.03" />
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- 3D Facet Elevation Heightmaps (Alpha Channel = Z-Depth for Normal Calculation) -->
+    <linearGradient id="z-crown-top" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.96" />
+    </linearGradient>
+
+    <linearGradient id="z-crown-ul" x1="0%" y1="15%" x2="100%" y2="85%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.92" />
+    </linearGradient>
+
+    <linearGradient id="z-crown-ur" x1="100%" y1="15%" x2="0%" y2="85%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.92" />
+    </linearGradient>
+
+    <linearGradient id="z-table" x1="15%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.88" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.98" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.86" />
+    </linearGradient>
+
+    <linearGradient id="z-bezel-l" x1="0%" y1="45%" x2="100%" y2="55%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.88" />
+    </linearGradient>
+
+    <linearGradient id="z-bezel-r" x1="100%" y1="45%" x2="0%" y2="55%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.88" />
+    </linearGradient>
+
+    <linearGradient id="z-girdle-l" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.82" />
+    </linearGradient>
+
+    <linearGradient id="z-girdle-c" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.72" />
+    </linearGradient>
+
+    <linearGradient id="z-girdle-r" x1="100%" y1="50%" x2="0%" y2="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.82" />
+    </linearGradient>
+
+    <linearGradient id="z-pav-l" x1="0%" y1="0%" x2="85%" y2="75%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.24" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.76" />
+    </linearGradient>
+
+    <linearGradient id="z-pav-c" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.78" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.16" />
+    </linearGradient>
+
+    <linearGradient id="z-pav-r" x1="100%" y1="0%" x2="15%" y2="75%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.24" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.76" />
+    </linearGradient>
+
+    <!-- 3D Normal-Map Diffuse + Specular Shader with 360° Orbital Light -->
+    <filter id="normal-crystal-shader" x="-50%" y="-50%" width="200%" height="200%">
+      <!-- Smooth Micro-Bevels on Facet Seams -->
+      <feGaussianBlur in="SourceAlpha" stdDeviation="0.6" result="heightmap" />
+
+      <!-- Diffuse Surface-Normal Shading -->
+      <feDiffuseLighting in="heightmap" surfaceScale="18" diffuseConstant="1.15" lighting-color="#818cf8" result="diffuse">
+        <fePointLight x="58" y="0" z="46">
+          <animate attributeName="x" dur="10s" repeatCount="indefinite" values="58; 50.2; 29; 0; -29; -50.2; -58; -50.2; -29; 0; 29; 50.2; 58" />
+          <animate attributeName="y" dur="10s" repeatCount="indefinite" values="0; 22; 38.1; 44; 38.1; 22; 0; -22; -38.1; -44; -38.1; -22; 0" />
+          <animate attributeName="z" dur="10s" repeatCount="indefinite" values="46; 42; 39; 38; 39; 42; 46; 50; 53; 54; 53; 50; 46" />
+        </fePointLight>
+      </feDiffuseLighting>
+
+      <!-- Specular Crystal Glint -->
+      <feSpecularLighting in="heightmap" surfaceScale="18" specularConstant="1.9" specularExponent="28" lighting-color="#e0f2fe" result="specular">
+        <fePointLight x="58" y="0" z="46">
+          <animate attributeName="x" dur="10s" repeatCount="indefinite" values="58; 50.2; 29; 0; -29; -50.2; -58; -50.2; -29; 0; 29; 50.2; 58" />
+          <animate attributeName="y" dur="10s" repeatCount="indefinite" values="0; 22; 38.1; 44; 38.1; 22; 0; -22; -38.1; -44; -38.1; -22; 0" />
+          <animate attributeName="z" dur="10s" repeatCount="indefinite" values="46; 42; 39; 38; 39; 42; 46; 50; 53; 54; 53; 50; 46" />
+        </fePointLight>
+      </feSpecularLighting>
+
+      <!-- Base Crystal Body Albedo -->
+      <feFlood flood-color="#1e1b4b" flood-opacity="0.9" result="crystal-base" />
+      <feBlend in="crystal-base" in2="diffuse" mode="screen" result="shaded-body" />
+      <feComposite in="specular" in2="shaded-body" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="lit-crystal" />
+
+      <!-- Hard Silhouette Clipping Mask from Heightmap -->
+      <feComponentTransfer in="SourceAlpha" result="silhouette-mask">
+        <feFuncA type="linear" slope="20" intercept="0" />
+      </feComponentTransfer>
+      <feComposite in="lit-crystal" in2="silhouette-mask" operator="in" />
     </filter>
   </defs>
-  <rect width="1200" height="150" fill="#0a0a0c"/>
-  <g transform="translate(600 70)">
-    <path d="M -180 0 C -180 -50 -90 -70 0 0 C 90 70 180 50 180 0 C 180 -50 90 -70 0 0 C -90 70 -180 50 -180 0 Z"
-          fill="none" stroke="url(#mobiusGrad)" stroke-width="2.5" filter="url(#mobGlow)">
-      <animate attributeName="stroke-width" values="2;3.5;2" dur="3s" repeatCount="indefinite"/>
-    </path>
-    <circle r="3" fill="#00e5ff">
-      <animateMotion dur="8s" repeatCount="indefinite" path="M -180 0 C -180 -50 -90 -70 0 0 C 90 70 180 50 180 0 C 180 -50 90 -70 0 0 C -90 70 -180 50 -180 0"/>
-    </circle>
+
+  <!-- Ambient Glow -->
+  <ellipse cx="600" cy="44" rx="54" ry="42" fill="url(#crystalAmbient)" />
+
+  <!-- Clean Tapered Hairlines -->
+  <line x1="140" y1="44" x2="546" y2="44" stroke="url(#ruleFade)" stroke-width="1" />
+  <line x1="654" y1="44" x2="1060" y2="44" stroke="url(#ruleFade)" stroke-width="1" />
+
+  <!-- 3D Normal-Mapped Diamond Assembly -->
+  <g transform="translate(600, 44)">
+    <!-- 12-Facet Elevation Mesh -->
+    <g filter="url(#normal-crystal-shader)">
+      <polygon points="0,-30 11,-18 -11,-18" fill="url(#z-crown-top)" />
+      <polygon points="0,-30 -11,-18 -22,-16" fill="url(#z-crown-ul)" />
+      <polygon points="0,-30 22,-16 11,-18" fill="url(#z-crown-ur)" />
+      <polygon points="-11,-18 11,-18 16,-8 -16,-8" fill="url(#z-table)" />
+      <polygon points="-22,-16 -11,-18 -16,-8 -30,-4" fill="url(#z-bezel-l)" />
+      <polygon points="22,-16 30,-4 16,-8 11,-18" fill="url(#z-bezel-r)" />
+      <polygon points="-30,-4 -16,-8 -12,-2" fill="url(#z-girdle-l)" />
+      <polygon points="-16,-8 16,-8 12,-2 -12,-2" fill="url(#z-girdle-c)" />
+      <polygon points="16,-8 30,-4 12,-2" fill="url(#z-girdle-r)" />
+      <polygon points="-30,-4 -12,-2 0,32" fill="url(#z-pav-l)" />
+      <polygon points="-12,-2 12,-2 0,32" fill="url(#z-pav-c)" />
+      <polygon points="12,-2 30,-4 0,32" fill="url(#z-pav-r)" />
+    </g>
+
+    <!-- Crisp Architectural Facet Creases -->
+    <g stroke="#e0f2fe" stroke-width="0.55" stroke-opacity="0.24" stroke-linejoin="round">
+      <polygon points="0,-30 22,-16 30,-4 0,32 -30,-4 -22,-16" />
+      <polygon points="-11,-18 11,-18 16,-8 -16,-8" />
+      <line x1="0" y1="-30" x2="-11" y2="-18" />
+      <line x1="0" y1="-30" x2="11" y2="-18" />
+      <line x1="-22" y1="-16" x2="-11" y2="-18" />
+      <line x1="22" y1="-16" x2="11" y2="-18" />
+      <line x1="-30" y1="-4" x2="-16" y2="-8" />
+      <line x1="30" y1="-4" x2="16" y2="-8" />
+      <line x1="-30" y1="-4" x2="-12" y2="-2" />
+      <line x1="-16" y1="-8" x2="-12" y2="-2" />
+      <line x1="16" y1="-8" x2="12" y2="-2" />
+      <line x1="30" y1="-4" x2="12" y2="-2" />
+      <line x1="-12" y1="-2" x2="12" y2="-2" />
+      <line x1="-12" y1="-2" x2="0" y2="32" />
+      <line x1="12" y1="-2" x2="0" y2="32" />
+    </g>
   </g>
-  <text x="600" y="135" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10" letter-spacing="8" fill="#ffffff" opacity="0.5">MMXXVI · CMDAEO</text>
+
+  <!-- Signature -->
+  <text x="600" y="102" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, &#39;JetBrains Mono&#39;, Menlo, Consolas, monospace" font-size="8.5" font-weight="500" letter-spacing="8" fill="#64748b">
+    MMXXVI · CMDAEO
+  </text>
 </svg>
