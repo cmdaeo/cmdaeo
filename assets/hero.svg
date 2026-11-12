@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 860" width="100%" height="860" fill="none" onload="var d=new Date(),e=document.getElementById(&#39;v5-out&#39;),s=document.getElementById(&#39;v5-st&#39;);if(e)e.textContent=d.toTimeString().slice(0,8);if(s){s.textContent=&#39;[EXECUTED]&#39;;s.setAttribute(&#39;fill&#39;,&#39;#10b981&#39;);}var o=document.getElementById(&#39;env-origin&#39;);if(o)o.textContent=String(window.location.href);var u=document.getElementById(&#39;env-ua&#39;);if(u)u.textContent=String(navigator.userAgent).slice(0,95);setInterval(function(){var n=new Date(),x=document.getElementById(&#39;v5-out&#39;);if(x)x.textContent=n.toTimeString().slice(0,8);},1000);">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 540" width="100%" height="540" fill="none" onload="var d=new Date(),e=document.getElementById(&#39;v3-out&#39;),s=document.getElementById(&#39;v3-st&#39;);if(e)e.textContent=d.toTimeString().slice(0,8);if(s){s.textContent=&#39;[EXECUTED]&#39;;s.setAttribute(&#39;fill&#39;,&#39;#10b981&#39;);}var o=document.getElementById(&#39;env-origin&#39;);if(o)o.textContent=String(window.location.href);var u=document.getElementById(&#39;env-ua&#39;);if(u)u.textContent=String(navigator.userAgent).slice(0,95);setInterval(function(){var n=new Date(),x=document.getElementById(&#39;v3-out&#39;);if(x)x.textContent=n.toTimeString().slice(0,8);},1000);">
 
   <defs>
     <linearGradient id="topLine" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -10,10 +10,9 @@
     </linearGradient>
 
     <clipPath id="smilClip">
-      <rect x="0" y="-18" width="90" height="24" />
+      <rect x="0" y="-22" width="110" height="28" />
     </clipPath>
 
-    <!-- VEC-10: Pure CSS Style Block Test -->
     <style type="text/css">
       
         @keyframes cssPulse {
@@ -29,7 +28,7 @@
   </defs>
 
   <!-- Canvas Background -->
-  <rect width="1200" height="860" rx="10" fill="#0d1117" stroke="#1e293b" stroke-width="1" />
+  <rect width="1200" height="540" rx="10" fill="#0d1117" stroke="#1e293b" stroke-width="1" />
 
   <!-- Header -->
   <g transform="translate(600, 42)" font-family="ui-monospace, SFMono-Regular, &#39;JetBrains Mono&#39;, Consolas, monospace">
@@ -37,22 +36,19 @@
       SVG RUNTIME & CLOCK VECTOR BENCHMARK
     </text>
     <text x="0" y="18" text-anchor="middle" font-size="9.5" fill="#64748b" letter-spacing="2">
-      TESTING INLINE JS, NAMESPACES, EVENT HANDLERS, DATA URIS, SMIL & CSS SANDBOXING
+      SCHEMA-VALID TEST SUITE FOR GITHUB VIEWER & README PROXY SANDBOXING
     </text>
   </g>
   <line x1="40" y1="74" x2="1160" y2="74" stroke="url(#topLine)" stroke-width="1" />
 
-  <!-- ===================================================================== -->
-  <!-- ROW 1                                                                 -->
-  <!-- ===================================================================== -->
-
+  <!-- ROW 1 -->
   <!-- VEC-01: Standard <script type="text/javascript"> + setInterval -->
   <g transform="translate(40, 92)">
     <rect width="545" height="96" rx="6" fill="#111827" stroke="#1e293b" stroke-width="1" />
     <text x="16" y="24" font-family="monospace" font-size="10.5" font-weight="600" fill="#38bdf8">VEC-01 // <script type="text/javascript"> + setInterval</text>
     <text id="v1-st" x="529" y="24" text-anchor="end" font-family="monospace" font-size="10" fill="#64748b">[BLOCKED / STATIC]</text>
     <text id="v1-out" x="16" y="64" font-family="monospace" font-size="26" font-weight="700" fill="#f8fafc">--:--:--</text>
-    <text x="16" y="83" font-family="monospace" font-size="9" fill="#64748b">Standard SVG 1.1/2 inline script block mutating textContent via new Date()</text>
+    <text x="16" y="83" font-family="monospace" font-size="9" fill="#64748b">Standard SVG inline script block mutating textContent via new Date()</text>
   </g>
 
   <!-- VEC-02: Typeless <script> + requestAnimationFrame -->
@@ -61,117 +57,46 @@
     <text x="16" y="24" font-family="monospace" font-size="10.5" font-weight="600" fill="#38bdf8">VEC-02 // Typeless <script> + requestAnimationFrame</text>
     <text id="v2-st" x="529" y="24" text-anchor="end" font-family="monospace" font-size="10" fill="#64748b">[BLOCKED / STATIC]</text>
     <text id="v2-out" x="16" y="64" font-family="monospace" font-size="26" font-weight="700" fill="#f8fafc">--:--:--.---</text>
-    <text x="16" y="83" font-family="monospace" font-size="9" fill="#64748b">Omits type attribute; tests 60fps rAF loop with window.Date().toISOString()</text>
+    <text x="16" y="83" font-family="monospace" font-size="9" fill="#64748b">Omits type attribute; tests 60fps rAF loop with Date().toISOString()</text>
   </g>
 
-  <!-- ===================================================================== -->
-  <!-- ROW 2                                                                 -->
-  <!-- ===================================================================== -->
-
-  <!-- VEC-03: XHTML Namespace <html:script> -->
-  <g transform="translate(40, 202)">
+  <!-- ROW 2 -->
+  <!-- VEC-03: Root <svg onload="..."> Event Attribute -->
+  <g transform="translate(40, 204)">
     <rect width="545" height="96" rx="6" fill="#111827" stroke="#1e293b" stroke-width="1" />
-    <text x="16" y="24" font-family="monospace" font-size="10.5" font-weight="600" fill="#818cf8">VEC-03 // XHTML Namespace <html:script></text>
+    <text x="16" y="24" font-family="monospace" font-size="10.5" font-weight="600" fill="#818cf8">VEC-03 // Root <svg onload="..."> Event Handler</text>
     <text id="v3-st" x="529" y="24" text-anchor="end" font-family="monospace" font-size="10" fill="#64748b">[BLOCKED / STATIC]</text>
     <text id="v3-out" x="16" y="64" font-family="monospace" font-size="26" font-weight="700" fill="#f8fafc">--:--:--</text>
-    <text x="16" y="83" font-family="monospace" font-size="9" fill="#64748b">Switches XML namespace to http://www.w3.org/1999/xhtml to bypass SVG tag filters</text>
-  </g>
-
-  <!-- VEC-04: <foreignObject> Embedded HTML Context -->
-  <g transform="translate(615, 202)">
-    <rect width="545" height="96" rx="6" fill="#111827" stroke="#1e293b" stroke-width="1" />
-    <text x="16" y="24" font-family="monospace" font-size="10.5" font-weight="600" fill="#818cf8">VEC-04 // <foreignObject> HTML <script> + <img onerror></text>
-    <text id="v4-st" x="529" y="24" text-anchor="end" font-family="monospace" font-size="10" fill="#64748b">[BLOCKED / STATIC]</text>
-    <text id="v4-out" x="16" y="64" font-family="monospace" font-size="26" font-weight="700" fill="#f8fafc">--:--:--</text>
-    <text x="16" y="83" font-family="monospace" font-size="9" fill="#64748b">Embeds HTML5 body inside foreignObject; tests HTML parser script & img onerror</text>
-    
-      
-        
-      
-    
-  </g>
-
-  <!-- ===================================================================== -->
-  <!-- ROW 3                                                                 -->
-  <!-- ===================================================================== -->
-
-  <!-- VEC-05: Root <svg onload="..."> Event Attribute -->
-  <g transform="translate(40, 312)">
-    <rect width="545" height="96" rx="6" fill="#111827" stroke="#1e293b" stroke-width="1" />
-    <text x="16" y="24" font-family="monospace" font-size="10.5" font-weight="600" fill="#c084fc">VEC-05 // Root <svg onload="..."> Event Handler</text>
-    <text id="v5-st" x="529" y="24" text-anchor="end" font-family="monospace" font-size="10" fill="#64748b">[BLOCKED / STATIC]</text>
-    <text id="v5-out" x="16" y="64" font-family="monospace" font-size="26" font-weight="700" fill="#f8fafc">--:--:--</text>
     <text x="16" y="83" font-family="monospace" font-size="9" fill="#64748b">Executes without any <script> tag via root SVG onload attribute</text>
   </g>
 
-  <!-- VEC-06: <image href="invalid" onerror="..."> Event Handler -->
-  <g transform="translate(615, 312)">
+  <!-- VEC-04: SMIL <animate onbegin="..."> Event Trigger -->
+  <g transform="translate(615, 204)">
     <rect width="545" height="96" rx="6" fill="#111827" stroke="#1e293b" stroke-width="1" />
-    <text x="16" y="24" font-family="monospace" font-size="10.5" font-weight="600" fill="#c084fc">VEC-06 // <image href="invalid" onerror="..."></text>
-    <text id="v6-st" x="529" y="24" text-anchor="end" font-family="monospace" font-size="10" fill="#64748b">[BLOCKED / STATIC]</text>
-    <text id="v6-out" x="16" y="64" font-family="monospace" font-size="26" font-weight="700" fill="#f8fafc">--:--:--</text>
-    <text x="16" y="83" font-family="monospace" font-size="9" fill="#64748b">Triggers immediate onerror handler on broken SVG <image> resource</text>
-    
-  </g>
-
-  <!-- ===================================================================== -->
-  <!-- ROW 4                                                                 -->
-  <!-- ===================================================================== -->
-
-  <!-- VEC-07: SMIL <animate onbegin="..."> Event Trigger -->
-  <g transform="translate(40, 422)">
-    <rect width="545" height="96" rx="6" fill="#111827" stroke="#1e293b" stroke-width="1" />
-    <text x="16" y="24" font-family="monospace" font-size="10.5" font-weight="600" fill="#38bdf8">VEC-07 // SMIL <animate onbegin="..."> Event</text>
-    <text id="v7-st" x="529" y="24" text-anchor="end" font-family="monospace" font-size="10" fill="#64748b">[BLOCKED / STATIC]</text>
-    <text id="v7-out" x="16" y="64" font-family="monospace" font-size="26" font-weight="700" fill="#f8fafc">--:--:--</text>
+    <text x="16" y="24" font-family="monospace" font-size="10.5" font-weight="600" fill="#818cf8">VEC-04 // SMIL <animate onbegin="..."> Event</text>
+    <text id="v4-st" x="529" y="24" text-anchor="end" font-family="monospace" font-size="10" fill="#64748b">[BLOCKED / STATIC]</text>
+    <text id="v4-out" x="16" y="64" font-family="monospace" font-size="26" font-weight="700" fill="#f8fafc">--:--:--</text>
     <text x="16" y="83" font-family="monospace" font-size="9" fill="#64748b">Fires JS callback when SMIL animation timeline starts at begin="0s"</text>
     <rect x="0" y="0" width="1" height="1" opacity="0">
-      <animate attributeName="opacity" from="0" to="0" dur="1s" begin="0s" onbegin="var d=new Date(),e=document.getElementById(&#39;v7-out&#39;),s=document.getElementById(&#39;v7-st&#39;);if(e)e.textContent=d.toTimeString().slice(0,8);if(s){s.textContent=&#39;[EXECUTED]&#39;;s.setAttribute(&#39;fill&#39;,&#39;#10b981&#39;);}setInterval(function(){var n=new Date(),x=document.getElementById(&#39;v7-out&#39;);if(x)x.textContent=n.toTimeString().slice(0,8);},1000);" />
+      <animate attributeName="opacity" from="0" to="0" dur="1s" begin="0s" onbegin="var d=new Date(),e=document.getElementById(&#39;v4-out&#39;),s=document.getElementById(&#39;v4-st&#39;);if(e)e.textContent=d.toTimeString().slice(0,8);if(s){s.textContent=&#39;[EXECUTED]&#39;;s.setAttribute(&#39;fill&#39;,&#39;#10b981&#39;);}setInterval(function(){var n=new Date(),x=document.getElementById(&#39;v4-out&#39;);if(x)x.textContent=n.toTimeString().slice(0,8);},1000);" />
     </rect>
   </g>
 
-  <!-- VEC-08: Base64 Data-URI <script href="data:text/javascript;base64,..."> -->
-  <g transform="translate(615, 422)">
+  <!-- ROW 3 -->
+  <!-- VEC-05: Pure CSS @keyframes Sanitizer Probe -->
+  <g transform="translate(40, 316)">
     <rect width="545" height="96" rx="6" fill="#111827" stroke="#1e293b" stroke-width="1" />
-    <text x="16" y="24" font-family="monospace" font-size="10.5" font-weight="600" fill="#38bdf8">VEC-08 // Data-URI <script href="data:...;base64"></text>
-    <text id="v8-st" x="529" y="24" text-anchor="end" font-family="monospace" font-size="10" fill="#64748b">[BLOCKED / STATIC]</text>
-    <text id="v8-out" x="16" y="64" font-family="monospace" font-size="26" font-weight="700" fill="#f8fafc">--:--:--</text>
-    <text x="16" y="83" font-family="monospace" font-size="9" fill="#64748b">Loads base64-encoded JS payload via external href / xlink:href data URI</text>
-  </g>
-
-  <!-- ===================================================================== -->
-  <!-- ROW 5                                                                 -->
-  <!-- ===================================================================== -->
-
-  <!-- VEC-09: Interactive <a href="javascript:..."> Click Trigger -->
-  <g transform="translate(40, 532)">
-    <a>
-      <rect width="545" height="96" rx="6" fill="#111827" stroke="#1e293b" stroke-width="1" />
-      <text x="16" y="24" font-family="monospace" font-size="10.5" font-weight="600" fill="#818cf8">VEC-09 // Interactive <a href="javascript:..."> (Click Card)</text>
-      <text id="v9-st" x="529" y="24" text-anchor="end" font-family="monospace" font-size="10" fill="#64748b">[CLICK TO TEST]</text>
-      <text id="v9-out" x="16" y="64" font-family="monospace" font-size="26" font-weight="700" fill="#f8fafc">--:--:--</text>
-      <text x="16" y="83" font-family="monospace" font-size="9" fill="#64748b">Tests if javascript: URI scheme survives sanitizer when passive scripts are blocked</text>
-    </a>
-  </g>
-
-  <!-- VEC-10: Pure CSS @keyframes Sanitizer Probe -->
-  <g transform="translate(615, 532)">
-    <rect width="545" height="96" rx="6" fill="#111827" stroke="#1e293b" stroke-width="1" />
-    <text x="16" y="24" font-family="monospace" font-size="10.5" font-weight="600" fill="#818cf8">VEC-10 // <style> CSS @keyframes Sandbox Probe</text>
+    <text x="16" y="24" font-family="monospace" font-size="10.5" font-weight="600" fill="#c084fc">VEC-05 // <style> CSS @keyframes Sandbox Probe</text>
     <text x="529" y="24" text-anchor="end" font-family="monospace" font-size="10" class="css-alive">[CSS ACTIVE]</text>
     <circle cx="28" cy="56" r="8" class="css-alive" />
     <text x="46" y="61" font-family="monospace" font-size="15" font-weight="600" fill="#f8fafc">PULSE = <style> SURVIVED</text>
     <text x="16" y="83" font-family="monospace" font-size="9" fill="#64748b">If the dot pulses and text is cyan, inline CSS <style> blocks are permitted</text>
   </g>
 
-  <!-- ===================================================================== -->
-  <!-- ROW 6                                                                 -->
-  <!-- ===================================================================== -->
-
-  <!-- VEC-11: Pure SMIL Discrete Reel Control (Zero JS) -->
-  <g transform="translate(40, 642)">
+  <!-- VEC-06: Pure SMIL Discrete Reel Control (Zero JS) -->
+  <g transform="translate(615, 316)">
     <rect width="545" height="96" rx="6" fill="#111827" stroke="#1e293b" stroke-width="1" />
-    <text x="16" y="24" font-family="monospace" font-size="10.5" font-weight="600" fill="#10b981">VEC-11 // Pure SMIL Discrete Counter (Control Reference)</text>
+    <text x="16" y="24" font-family="monospace" font-size="10.5" font-weight="600" fill="#10b981">VEC-06 // Pure SMIL Discrete Counter (Control Reference)</text>
     <text x="529" y="24" text-anchor="end" font-family="monospace" font-size="10" fill="#10b981">[SMIL CONTROL]</text>
 
     <g transform="translate(16, 64)" clip-path="url(#smilClip)" font-family="monospace" font-size="26" font-weight="700">
@@ -194,19 +119,8 @@
     <text x="16" y="83" font-family="monospace" font-size="9" fill="#64748b">Pure declarative SMIL animation — verifies rendering engine is ticking without JS</text>
   </g>
 
-  <!-- VEC-12: Function() / eval() / Indirect Global Scope Probe -->
-  <g transform="translate(615, 642)">
-    <rect width="545" height="96" rx="6" fill="#111827" stroke="#1e293b" stroke-width="1" />
-    <text x="16" y="24" font-family="monospace" font-size="10.5" font-weight="600" fill="#c084fc">VEC-12 // Indirect GlobalThis / Date.now() Epoch Probe</text>
-    <text id="v12-st" x="529" y="24" text-anchor="end" font-family="monospace" font-size="10" fill="#64748b">[BLOCKED / STATIC]</text>
-    <text id="v12-out" x="16" y="64" font-family="monospace" font-size="22" font-weight="700" fill="#f8fafc">EPOCH: -------------</text>
-    <text x="16" y="83" font-family="monospace" font-size="9" fill="#64748b">Queries globalThis.Date.now() raw millisecond timestamp via CDATA script block</text>
-  </g>
-
-  <!-- ===================================================================== -->
-  <!-- ENVIRONMENT & SANDBOX TELEMETRY FOOTER                                -->
-  <!-- ===================================================================== -->
-  <g transform="translate(40, 754)">
+  <!-- ENVIRONMENT & SANDBOX TELEMETRY FOOTER -->
+  <g transform="translate(40, 430)">
     <rect width="1120" height="84" rx="6" fill="#090d16" stroke="#1e293b" stroke-width="1" />
     <text x="16" y="22" font-family="monospace" font-size="10" font-weight="700" fill="#38bdf8" letter-spacing="1.5">
       EXECUTION ENVIRONMENT TELEMETRY (POPULATED IF ANY JS VECTOR ESCAPES SANDBOX)
@@ -218,10 +132,6 @@
       USER_AGENT    : <tspan id="env-ua" fill="#f8fafc">[N/A]</tspan>
     </text>
   </g>
-
-  <!-- ===================================================================== -->
-  <!-- SCRIPT PAYLOADS FOR VEC-01, VEC-02, VEC-03, VEC-08, VEC-12            -->
-  <!-- ===================================================================== -->
 
   <!-- VEC-01 Script -->
   <script type="text/javascript">
@@ -240,7 +150,7 @@
     
   </script>
 
-  <!-- VEC-02 Script (Typeless + rAF) -->
+  <!-- VEC-02 Script -->
   <script>
     
       (function() {
@@ -253,39 +163,6 @@
           requestAnimationFrame(loop2);
         }
         requestAnimationFrame(loop2);
-      })();
-    
-  </script>
-
-  <!-- VEC-03 Script (XHTML Namespace) -->
-  
-    
-      (function() {
-        function tick3() {
-          var d = new Date();
-          var el = document.getElementById('v3-out');
-          var st = document.getElementById('v3-st');
-          if (el) el.textContent = d.toTimeString().slice(0, 8);
-          if (st) { st.textContent = '[EXECUTED]'; st.setAttribute('fill', '#10b981'); }
-        }
-        tick3();
-        setInterval(tick3, 1000);
-      })();
-    
-  
-
-  <!-- VEC-08 Script (Base64 Data URI) -->
-  <script type="application/ecmascript">
-    
-      (function() {
-        function tick12() {
-          var el = document.getElementById('v12-out');
-          var st = document.getElementById('v12-st');
-          if (el) el.textContent = 'EPOCH: ' + globalThis.Date.now();
-          if (st) { st.textContent = '[EXECUTED]'; st.setAttribute('fill', '#10b981'); }
-        }
-        tick12();
-        setInterval(tick12, 250);
       })();
     
   </script>
